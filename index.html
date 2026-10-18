@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="王哲豪 Joey Wang 的个人求职作品集：数据分析研究、云平台实习与教育经历。">
+<meta name="theme-color" content="#f3f4f2">
+<title>Joey Wang — 数据与产品实践 / Personal Archive</title>
+<style>
+:root{--paper:#f3f4f2;--ink:#25303b;--muted:#6b747a;--rose:#355d76;--line:#ccd2d5;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--serif:Georgia,"Times New Roman","Songti SC",SimSun,serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;color:var(--ink);background:var(--paper);font:14px/1.85 system-ui,"Microsoft YaHei",sans-serif;background-image:radial-gradient(#5c687210 .65px,transparent .7px);background-size:5px 5px}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}a:hover{color:var(--rose)}button,a,summary{-webkit-tap-highlight-color:transparent}:focus-visible{outline:2px solid var(--rose);outline-offset:5px}.wrap{width:min(1240px,calc(100% - 80px));margin-inline:auto}.eyebrow{font:10px/1.5 var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:0 0 20px}.rose{color:var(--rose)}.mono{font-family:var(--mono)}.muted{color:var(--muted)}.skip-link{position:fixed;top:-100px;left:10px;background:var(--ink);color:var(--paper);padding:10px;z-index:10}.skip-link:focus{top:10px}.site-header{height:88px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.brand{font:15px var(--mono);letter-spacing:2px}.brand b{display:inline-grid;place-items:center;font:26px var(--serif);width:35px;height:35px;background:var(--rose);color:var(--paper);margin-right:9px}.site-header nav{display:flex;gap:32px;font:10px var(--mono);letter-spacing:1px}.availability{font:9px var(--mono);letter-spacing:1px;display:flex;align-items:center;gap:8px}.availability::before{content:"";width:6px;height:6px;background:#74825b;border-radius:50%;box-shadow:0 0 0 4px #74825b12}
+.hero{padding-top:27px;position:relative}.hero-topline{display:flex;justify-content:space-between;font:9px var(--mono);letter-spacing:1.5px;color:var(--muted)}.hero-stage{position:relative;margin-top:20px;border-bottom:1px solid var(--line);padding-bottom:65px}.wordmark{font:400 clamp(100px,23.5vw,335px)/.95 var(--serif);letter-spacing:-.075em;margin:0 0 35px;white-space:nowrap;position:relative;z-index:1}.wordmark>span{color:var(--rose)}.wordmark>i{font-style:normal;font-size:.65em;color:var(--rose);margin-left:.025em}.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#6f819113 1px,transparent 1px),linear-gradient(90deg,#6f819113 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(transparent,#0009,transparent)}.hero-caption{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:35px;position:relative;z-index:1;align-items:end}.hero-name h2{font-size:20px;font-weight:600;margin:0 0 12px}.hero-name p{font:10px/1.9 var(--mono);color:var(--muted);margin:0}.hero-statement{font:italic 29px/1.7 var(--serif);max-width:430px;text-align:center;margin:0}.hero-statement strong{font-weight:400;color:var(--rose)}.focus-note{justify-self:end;width:220px;border:1px solid var(--line);background:#f8f9f6;padding:18px 21px;transform:rotate(3deg);box-shadow:4px 5px 0 #34495d08}.focus-note .eyebrow{font-size:8px;margin-bottom:12px}.focus-note span{display:block;border-top:1px solid #d5dcdf;padding-top:7px;margin-top:7px;font-size:11px}.hero-bottom{display:flex;justify-content:space-between;align-items:center;padding-block:20px;font:10px var(--mono)}.hero-bottom a{border-bottom:1px solid var(--rose);padding-bottom:5px;color:var(--rose)}.hero-bottom p{margin:0;color:var(--muted);font-size:9px}
+.section{padding-block:85px}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:37px}.section-head .eyebrow{margin-bottom:10px}.section-head h2{font:400 clamp(35px,5vw,65px)/1.1 var(--serif);letter-spacing:-2px;margin:0}.section-head h2 i{font-style:normal;color:var(--rose)}.section-head>p{font-size:11px;line-height:1.9;color:var(--muted);max-width:240px;margin:0 0 5px}.work-layout{display:grid;grid-template-columns:200px 1fr;gap:50px}.file-tabs{display:flex;flex-direction:column;gap:12px}.file-tab{text-align:left;border:1px solid var(--line);background:transparent;padding:17px 15px;cursor:pointer;transition:background .2s}.file-tab[aria-selected=true]{background:var(--rose);border-color:var(--rose);color:#f6f8fa}.file-tab>span{display:block;font:9px var(--mono);letter-spacing:1px;margin-bottom:10px;opacity:.7}.file-tab strong{font-size:13px;font-weight:500}.file-tab:focus-visible{outline-offset:4px}.project-panel[hidden]{display:none}.file-sheet{position:relative;padding:30px 35px 33px;border:1px solid #b6c1c8;background:#f8f9f6;box-shadow:7px 8px 0 #e2e7e8,8px 9px 0 #c4ced3}.file-sheet::before{content:"";position:absolute;top:-13px;left:45%;width:90px;height:24px;background:#a5b7c44d;transform:rotate(-4deg)}.file-meta{display:flex;justify-content:space-between;font:9px var(--mono);letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:17px;gap:20px}.file-meta span:first-child{color:var(--rose)}.file-sheet h3{font:400 32px/1.6 var(--serif);margin:25px 0 12px;max-width:740px}.file-summary{font-size:12px;color:var(--muted);max-width:650px;line-height:2;margin:0}.research-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line);margin-block:25px}.research-metrics>div{padding:20px 14px 18px;border-right:1px solid var(--line)}.research-metrics>div:first-child{padding-left:0}.research-metrics>div:last-child{border-right:0}.research-metrics strong{font:400 36px var(--serif);color:var(--rose);display:block;margin-bottom:7px}.research-metrics span{font-size:10px;color:var(--muted)}.research-note{font:9px/1.8 var(--mono);color:var(--muted);margin:-12px 0 23px}.research-row{display:grid;grid-template-columns:85px 1fr;gap:20px;border-bottom:1px dotted #c8d1d6;padding-block:13px}.research-row>span{font:9px/2 var(--mono);color:var(--rose)}.research-row>p{font-size:12px;line-height:1.9;margin:0;color:#56646d}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}.tags span{font:8px var(--mono);border:1px solid #c3cdd3;padding:5px 8px;letter-spacing:.5px}.file-sheet-footer{display:flex;justify-content:space-between;font:8px var(--mono);letter-spacing:1px;color:var(--muted);margin-top:24px}
+.experience-section{border-top:1px solid var(--line)}.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px;margin-top:45px}.experience-card{background:#e7e9e5;border:1px solid #bbc7cd;padding:26px 24px;position:relative;min-width:0}.experience-card:nth-child(2){background:#dfe7ec;transform:translateY(14px)}.experience-card::before{content:"";position:absolute;top:-9px;left:38%;width:70px;height:19px;background:#a4b4bf55;transform:rotate(-5deg)}.experience-card .date{font:9px var(--mono);color:var(--muted);margin:0 0 22px}.experience-card h3{font:400 23px/1.5 var(--serif);margin:0 0 10px}.experience-card .role{font-size:11px;color:var(--rose);margin:0 0 17px}.experience-card ul{padding-left:15px;margin:0}.experience-card li{font-size:11px;line-height:1.95;color:#59666f;margin-bottom:12px}.experience-card .outcome{font:9px var(--mono);border-top:1px solid #bbc7cd;padding-top:15px;display:flex;justify-content:space-between;margin-top:23px}.experience-card .outcome b{color:var(--rose);font-weight:400}
+.archive-section{padding-top:85px}.archive-cover{border:1px solid #aab7bf;padding:9px;background:#d8ddda;box-shadow:0 14px 30px #34495d10}.archive-pages{border:1px solid #aab7bf;background:linear-gradient(90deg,#eeefe8 0%,#f7f8f2 47%,#e0e5df 49.8%,#c7d0cb 50%,#f3f5ee 50.5%,#eeefe8 100%);padding:30px 36px 36px;position:relative}.archive-pages::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#9aaeb75c}.archive-top{display:flex;justify-content:space-between;font:8px var(--mono);letter-spacing:1px;color:var(--muted);margin-bottom:20px}.archive-heading{text-align:center;font:italic 33px/1.5 var(--serif);margin:0 0 40px;position:relative;z-index:1}.archive-heading em{font-style:normal;color:var(--rose)}.archive-columns{display:grid;grid-template-columns:1fr 1fr;gap:80px}.archive-label{font:400 21px var(--serif);color:#355d76;border-bottom:1px solid #aebec7;padding-bottom:12px;margin:0 0 20px}.school{margin-block:20px}.school>span{font:9px var(--mono);color:var(--muted)}.school h4{font-size:16px;font-weight:500;margin:8px 0 6px}.school p{font-size:11px;line-height:1.9;color:#627078;margin:0}.school small{font:8px var(--mono);color:var(--rose);display:inline-block;border:1px solid #afbdc5;padding:3px 7px;margin-top:8px}.school+.archive-label{margin-top:30px}.tool-row{display:grid;grid-template-columns:95px 1fr;gap:15px;border-bottom:1px dotted #bdc9cf;padding-block:11px;font-size:11px}.tool-row b{font-weight:500}.tool-row span{color:#65727a}.archive-list{padding-left:16px;margin-bottom:30px}.archive-list li{font-size:11px;line-height:1.9;color:#5f6d76;margin-bottom:8px}.contact-note{font-size:11px;line-height:1.9;color:#5f6d76}.contact-note strong{display:block;color:var(--rose);font-weight:500;margin-top:12px}.contact-mark{display:inline-block;border:1px solid #355d76;color:#355d76;padding:10px 15px;transform:rotate(-5deg);font:12px var(--mono);letter-spacing:2px;margin-top:15px}.site-footer{border-top:1px solid var(--line);padding-block:27px;display:flex;justify-content:space-between;font:9px var(--mono);color:var(--muted);gap:20px}.site-footer a{color:var(--rose)}
+@media(max-width:1050px){.wrap{width:calc(100% - 56px)}.site-header nav{gap:20px}.hero-caption{grid-template-columns:1fr 1.3fr}.focus-note{display:none}.wordmark{font-size:26vw}.work-layout{grid-template-columns:170px 1fr;gap:26px}.file-sheet{padding:28px}.file-sheet h3{font-size:26px}.research-metrics strong{font-size:29px}.experience-card{padding:23px 19px}.experience-card h3{font-size:20px}.archive-columns{gap:60px}.archive-pages{padding-inline:28px}.archive-heading{font-size:28px}}
+@media(max-width:700px){.wrap{width:calc(100% - 36px)}.site-header{height:76px}.brand{font-size:12px;letter-spacing:1px}.brand b{width:28px;height:28px;font-size:22px;margin-right:4px}.site-header nav{gap:16px;font-size:10px;letter-spacing:0}.availability{display:none}.hero{padding-top:22px}.hero-topline{font-size:7px;letter-spacing:1px}.hero-stage{margin-top:25px;padding-bottom:30px}.wordmark{font-size:26vw;letter-spacing:-.075em;margin-bottom:30px}.hero-caption{grid-template-columns:1fr;gap:20px}.hero-name h2{font-size:18px;margin-bottom:9px}.hero-statement{text-align:left;font-size:23px;line-height:1.7}.hero-bottom{gap:25px;align-items:start;padding-block:18px}.hero-bottom p{font-size:8px;line-height:1.7;text-align:right;max-width:170px}.hero-bottom a{white-space:nowrap;font-size:9px}.section{padding-block:50px}.section-head{display:block;margin-bottom:25px}.section-head h2{font-size:39px;letter-spacing:-1px}.section-head>p{margin-top:16px;font-size:11px;max-width:100%}.work-layout{grid-template-columns:1fr;gap:26px}.file-tabs{flex-direction:row;gap:10px}.file-tab{flex:1;min-width:0;padding:13px 10px}.file-tab>span{font-size:8px;margin-bottom:7px}.file-tab strong{font-size:12px}.file-sheet{padding:23px 19px}.file-meta{font-size:7px;gap:10px;line-height:1.8;padding-bottom:12px}.file-sheet h3{font-size:23px;margin-top:20px}.file-summary{font-size:11px}.research-metrics{margin-block:20px}.research-metrics>div{padding:15px 8px}.research-metrics strong{font-size:25px;white-space:nowrap}.research-metrics span{font-size:8px;line-height:1.8;display:block}.research-note{font-size:8px}.research-row{grid-template-columns:58px 1fr;gap:10px;padding-block:12px}.research-row>span{font-size:8px;line-height:2.2}.research-row>p{font-size:11px}.file-sheet-footer{font-size:7px;gap:20px;line-height:1.7}.experience-grid{grid-template-columns:1fr;gap:26px;margin-top:32px}.experience-card:nth-child(2){transform:none}.experience-card{padding:25px}.experience-card h3{font-size:24px}.experience-card li{font-size:12px}.archive-section{padding-top:30px}.archive-cover{padding:5px}.archive-pages{padding:22px 19px;background:#f1f3ed}.archive-pages::after{display:none}.archive-top{font-size:6px;gap:20px;line-height:1.8}.archive-heading{font-size:24px;margin-bottom:30px}.archive-columns{grid-template-columns:1fr;gap:28px}.archive-list li,.tool-row,.school p,.contact-note{font-size:12px}.school+.archive-label{margin-top:25px}.archive-label{font-size:23px}.site-footer{font-size:8px;gap:15px;line-height:1.8}.tags{gap:6px}.tags span{font-size:7px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media print{.file-tabs,.hero-grid{display:none}.project-panel[hidden]{display:block}.project-panel{margin-bottom:25px}.work-layout{display:block}.hero{padding-top:0}.wordmark{font-size:100px}.section{padding-block:25px}.experience-card,.file-sheet,.archive-cover{break-inside:avoid;box-shadow:none}.archive-columns{gap:30px}.experience-card:nth-child(2){transform:none}body{background:white}}
+
+/* Progressive enhancement: read every project when scripts are unavailable. */
+.file-tabs{display:none}[data-enhanced] .file-tabs{display:flex}
+.project-panel:not([hidden])+.project-panel:not([hidden]){margin-top:28px}
+@media(max-width:700px){.research-metrics{grid-template-columns:1fr 1fr}.research-metrics>div:nth-child(2){border-right:0}.research-metrics>div:last-child{grid-column:1/-1;border-top:1px solid var(--line);padding-left:0}.research-metrics>div:last-child strong{font-size:30px}.hero-name p{font-size:11px;line-height:1.9}}
+/* Motion edition — fully local and optional. */
+.reading-progress{height:3px;position:fixed;top:0;left:0;right:0;z-index:100;background:var(--rose);transform:scaleX(0);transform-origin:left center;pointer-events:none}
+.wordmark{position:relative;will-change:translate;isolation:isolate}
+.wordmark>.wordmark-letter{color:inherit;display:inline-block;transform-origin:bottom center}
+.wordmark>.wordmark-letter.accent{color:var(--rose)}
+.wordmark>.wordmark-letter.dot{font-size:.65em;color:var(--rose);margin-left:.025em}
+.hero-statement strong{position:relative;display:inline-block}
+.insight-underline{position:absolute;bottom:-5px;left:0;width:100%;height:11px;overflow:visible;fill:none;stroke:var(--rose);stroke-width:1.5;stroke-linecap:round}
+.orbit-art{position:absolute;right:1%;top:8%;width:240px;height:240px;color:var(--rose);opacity:.55;pointer-events:none;z-index:0}
+.orbit-art svg{width:100%;height:100%;overflow:visible}.orbit-art .ring{transform-origin:120px 120px;animation:orbit-spin 46s linear infinite}.orbit-art .ring.reverse{animation-direction:reverse;animation-duration:65s}.orbit-art text{font:7px var(--mono);letter-spacing:2px;fill:var(--muted);stroke:none}.orbit-art .node{fill:var(--rose);stroke:none}.orbit-art circle,.orbit-art path{fill:none;stroke:currentColor;stroke-width:.6}.orbit-art .node-center{fill:var(--paper);stroke:var(--rose);stroke-width:1}
+@keyframes orbit-spin{to{rotate:360deg}}
+.site-header nav a{position:relative;transition:color .2s}.site-header nav a::after{content:"";position:absolute;height:1px;bottom:-7px;left:0;right:0;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .25s}.site-header nav a:hover::after,.site-header nav a[aria-current]::after{transform:scaleX(1)}.site-header nav a[aria-current]{color:var(--rose)}
+.file-tab{position:relative;overflow:hidden;transition:background .25s,color .25s,translate .25s}.file-tab:hover{translate:4px 0}.file-tab[aria-selected=true]::after{content:"↗";position:absolute;right:12px;top:12px;font-size:13px}.file-sheet{transform-origin:top center}.file-sheet::before{transition:transform .4s}.file-sheet:hover::before{transform:rotate(2deg)}
+.experience-card,.focus-note{--base-angle:0deg;--card-shift:0px;transform:perspective(900px) translateY(calc(var(--card-shift) + var(--card-lift,0px))) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) rotate(var(--base-angle));transition:transform .32s ease-out,box-shadow .32s}.experience-card:nth-child(2){--card-shift:14px;transform:perspective(900px) translateY(calc(var(--card-shift) + var(--card-lift,0px))) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}.focus-note{--base-angle:3deg}.experience-card:hover{box-shadow:0 15px 25px #34495d15}.archive-cover{transform:perspective(1600px) rotateX(var(--book-angle,0deg));transform-origin:center top}.contact-mark{transition:transform .3s,background .3s}.contact-mark:hover{transform:rotate(0deg);background:#355d760a}.archive-label{position:relative}.archive-label::after{content:"";position:absolute;left:0;bottom:-1px;width:32px;height:1px;background:var(--rose)}
+@media(max-width:1050px){.orbit-art{width:160px;height:160px;right:0;top:7%}}
+@media(max-width:700px){.orbit-art{display:none}.file-tab:hover{translate:none}.wordmark{will-change:auto}.experience-card:nth-child(2){--card-shift:0px}.archive-cover{transform:none}}
+@media(prefers-reduced-motion:reduce){.reading-progress{display:none}.wordmark{will-change:auto}.orbit-art .ring{animation:none!important}.experience-card,.experience-card:nth-child(2),.focus-note,.archive-cover{transform:none!important}.file-tab:hover{translate:none}.insight-underline path{stroke-dashoffset:0!important}}
+@media print{.reading-progress,.orbit-art{display:none!important}.wordmark,.experience-card,.experience-card:nth-child(2),.focus-note,.archive-cover{transform:none!important;translate:none!important}}
+
+.email-link{display:grid;grid-template-columns:1fr auto;gap:5px 10px;margin-top:20px;padding:16px 0;border-block:1px dotted #aebec7;overflow-wrap:anywhere}.email-link>.eyebrow{grid-column:1/-1;margin:0;font-size:8px}.email-link strong{margin-top:0;font:12px/1.8 var(--mono);min-width:0}.email-link>span:last-child{color:var(--rose);font-size:21px;transition:translate .25s}.email-link:hover>span:last-child{translate:3px -3px}@media(max-width:700px){.email-link strong{font-size:12px}}
+.site-header{position:sticky;top:0;z-index:50;background:#f3f4f2ed;backdrop-filter:blur(12px)}html{scroll-padding-top:112px}@media(max-width:700px){html{scroll-padding-top:96px}}@media print{.site-header{position:static;backdrop-filter:none}[data-enhanced] .file-tabs{display:none!important}}
+/* Expressive blue edition: stronger hierarchy and data-inspired decoration. */
+:root{--spark:#4677d5;--teal:#40808c}
+.site-header nav{font-family:system-ui,"Microsoft YaHei",sans-serif;font-size:16px;font-weight:550;letter-spacing:2px;gap:36px}.site-header nav a{padding:10px 0}.site-header nav a::after{bottom:3px;height:2px}
+.hero-name h2{font-size:30px;font-weight:650;line-height:1.5;letter-spacing:-.5px;margin-bottom:16px}.hero-name p{font-family:system-ui,"Microsoft YaHei",sans-serif;font-size:15px;line-height:2;color:#526574}.hero-caption{gap:36px}.hero-statement{font-size:31px}.hero-stage::before{content:"";position:absolute;right:-15px;top:-45px;width:430px;height:430px;max-width:75%;border-radius:50%;background:radial-gradient(ellipse,#8bb9df39 0%,#b4c9e424 33%,transparent 70%);pointer-events:none}.hero-grid{background-size:48px 48px;opacity:.8}.wordmark>.wordmark-letter.accent{background:linear-gradient(145deg,#34566d 18%,#426da6 65%,#6394bb);background-clip:text;-webkit-background-clip:text;color:transparent}.wordmark>.wordmark-letter.dot{color:var(--spark)}
+.orbit-art{width:310px;height:310px;right:.5%;top:-1%;opacity:.8}.orbit-art .ring:first-of-type{animation-duration:30s}.orbit-art .orbit-dash{stroke:var(--spark);stroke-width:1.5;stroke-dasharray:10 12;animation:data-path 12s linear infinite}.orbit-art .orbit-spark{fill:var(--spark);stroke:none;transform-origin:center;animation:node-breathe 5s ease-in-out infinite}.orbit-art .node-center{fill:#f4f7fb;stroke-width:1.3}.orbit-pill{position:absolute;font:9px/1.2 var(--mono);letter-spacing:.7px;padding:9px 12px;border:1px solid #91acbf;background:#f6f9f8e8;color:#38566f;box-shadow:3px 4px 0 #355d760b;white-space:nowrap;animation:label-float 8s ease-in-out infinite}.orbit-pill.one{top:18%;left:-13%;rotate:-8deg}.orbit-pill.two{bottom:12%;right:-2%;rotate:7deg;animation-delay:-4s}.orbit-pill.three{bottom:1%;left:0;rotate:-3deg;font-size:8px;animation-delay:-2s}.focus-note{border-color:#9eafbb;background:linear-gradient(135deg,#fffef9,#e9f0f4);box-shadow:6px 8px 0 #355d760b}.focus-note::before{content:"✳";position:absolute;right:12px;top:-27px;font:43px var(--serif);color:var(--spark);animation:slow-star 35s linear infinite}.focus-note span{font-size:12px;line-height:1.6}.hero-bottom a{font-size:12px}.hero-bottom p{font-size:10px;line-height:1.7}
+.signal-ribbon{overflow:hidden;border-block:1px solid #adc1cf;background:linear-gradient(100deg,#e2ebee,#dce6f4 60%,#e0eaeb);margin-top:16px;position:relative}.signal-ribbon::before,.signal-ribbon::after{content:"";position:absolute;top:0;bottom:0;width:55px;pointer-events:none;z-index:1}.signal-ribbon::before{left:0;background:linear-gradient(90deg,#e2ebee,transparent)}.signal-ribbon::after{right:0;background:linear-gradient(270deg,#e0eaeb,transparent)}.ribbon-track{display:flex;width:max-content;animation:ribbon-scroll 32s linear infinite}.ribbon-set{display:flex;align-items:center;justify-content:space-around;gap:48px;flex-shrink:0;padding:15px 24px;font:11px var(--mono);letter-spacing:2px;color:#3d5d74}.ribbon-set b{font:24px var(--serif);color:var(--spark)}.signal-ribbon:hover .ribbon-track{animation-play-state:paused}
+.file-tab{border-color:#adbdc8}.file-tab[aria-selected=true]{background:linear-gradient(120deg,#31556e,#4a73a2);box-shadow:4px 5px 0 #365e7520}.file-tab[aria-selected=true]::after{font-size:19px;top:9px}.file-tab:hover{box-shadow:5px 6px 0 #365e7510}.file-sheet{border-color:#9eafbb;background:linear-gradient(135deg,#fbfcf7,#f2f6f8);box-shadow:8px 10px 0 #dbe3e7,9px 11px 0 #a4b5bf;transition:box-shadow .35s}.file-sheet:hover{box-shadow:10px 14px 0 #d4dfe5,11px 15px 0 #a4b5bf}.file-sheet::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--spark),transparent);background-size:200% 100%;animation:sheet-glint 6s ease-in-out infinite}.file-summary,.research-row>p{font-size:14px;line-height:1.95}.file-meta{font-size:10px}.research-row>span{font-size:10px}.research-metrics{background:linear-gradient(95deg,#e1eaf23d,#fff0,#e4eeef5c);border-color:#bdcbd4}.research-metrics strong{color:#355d76}.research-metrics span{font-size:12px}.research-note{font-size:10px}.experience-card{background:linear-gradient(145deg,#ecede7,#e1e6e7);border-color:#aebec9}.experience-card:nth-child(2){background:linear-gradient(145deg,#e7eef5,#dce6ef)}.experience-card:nth-child(3){background:linear-gradient(145deg,#edf0e8,#dde8e5)}.experience-card .date{font-size:11px}.experience-card .role{font-size:13px}.experience-card li{font-size:13px}.experience-card .outcome{font-size:10px}.experience-card:hover{box-shadow:0 20px 32px #345c7b25}.experience-card::after{content:"+";position:absolute;right:14px;top:9px;font:19px var(--mono);color:#477ca9}.archive-cover{border-color:#92a8b7;box-shadow:0 17px 40px #355d761b}.archive-top{font-size:9px}.school h4{font-size:18px}.school p,.tool-row,.archive-list li,.contact-note{font-size:13px}.archive-label{font-size:23px}.school small{font-size:10px}.email-link strong{font-size:14px}.contact-mark{padding:13px 20px;background:#e7eff3;box-shadow:4px 5px 0 #3f648b13}.contact-mark:hover{background:#355d76;color:#f6f8fa;box-shadow:7px 8px 0 #3f648b18}
+.pointer-glow{position:fixed;left:0;top:0;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,#659ce314,transparent 68%);pointer-events:none;z-index:40;opacity:0;transition:opacity .4s;translate:-50% -50%}
+@keyframes data-path{to{stroke-dashoffset:-220}}
+@keyframes node-breathe{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes label-float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes slow-star{to{rotate:360deg}}
+@keyframes ribbon-scroll{to{transform:translateX(-50%)}}
+@keyframes sheet-glint{0%,100%{background-position:200% 0;opacity:.4}50%{background-position:-100% 0;opacity:.9}}
+@media(max-width:1050px){.site-header nav{font-size:15px;gap:24px;letter-spacing:1px}.hero-name h2{font-size:28px}.hero-name p{font-size:15px}.orbit-art{width:190px;height:190px;top:3%}.orbit-pill{display:none}.hero-statement{font-size:29px}.availability{font-size:8px}}
+@media(max-width:700px){.site-header{display:grid;grid-template-columns:1fr;height:auto;gap:9px;padding-block:13px 8px}.site-header .brand{font-size:13px}.site-header nav{width:100%;justify-content:space-between;gap:14px;font-size:15px;letter-spacing:1px}.site-header nav a{padding:5px 0}.site-header nav a::after{bottom:0}.hero-name h2{font-size:26px;line-height:1.55;margin-bottom:12px}.hero-name p{font-size:14px;line-height:2}.hero-statement{font-size:25px}.hero-caption{gap:23px}.hero-stage::before{top:-50px;right:0;width:270px;height:270px;max-width:100%;opacity:.85}.hero-bottom a{font-size:11px}.hero-bottom p{font-size:9px}.signal-ribbon{margin-top:4px}.ribbon-set{font-size:10px;gap:27px;padding:13px 20px;letter-spacing:1px}.ribbon-set b{font-size:21px}.file-meta{font-size:8px}.file-summary,.research-row>p{font-size:13px}.research-row{grid-template-columns:65px 1fr}.research-row>span{font-size:9px}.research-metrics span{font-size:11px}.research-note{font-size:9px}.experience-card .date{font-size:10px}.experience-card li{font-size:13px}.archive-top{font-size:7px}.school p,.tool-row,.archive-list li,.contact-note{font-size:13px}.email-link strong{font-size:13px}.pointer-glow{display:none}html{scroll-padding-top:130px}}
+@media(hover:none),(pointer:coarse){.pointer-glow{display:none}}
+@media(prefers-reduced-motion:reduce){.orbit-art *,.orbit-pill,.ribbon-track,.focus-note::before,.file-sheet::after{animation:none!important}.pointer-glow{display:none}}
+@media print{.signal-ribbon,.pointer-glow,.orbit-art,.focus-note::before{display:none!important}.wordmark>.wordmark-letter.accent{background:none;color:var(--rose)}.file-sheet,.experience-card{background:white}.site-header{display:flex}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<div class="reading-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">跳转到正文</a>
+<header class="site-header wrap"><a href="#home" class="brand" aria-label="Joey Wang 首页"><b>J</b> JOEY WANG.</a><nav aria-label="主导航"><a href="#work">作品</a><a href="#experience">经历</a><a href="#about">关于</a><a href="#contact">联系</a></nav><div class="availability">OPEN TO OPPORTUNITIES</div></header>
+<main id="main">
+<section class="hero wrap" id="home" aria-labelledby="hero-name">
+ <div class="hero-topline"><span>PERSONAL ARCHIVE / VOL. 01</span><span>DATA · TECHNOLOGY · BUSINESS</span></div>
+ <div class="hero-stage"><div class="hero-grid" aria-hidden="true"></div><div class="orbit-art" aria-hidden="true"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="88" stroke-dasharray="2 5"/><g class="ring"><ellipse cx="120" cy="120" rx="103" ry="44" fill="none" stroke="currentColor" stroke-width=".6" transform="rotate(-35 120 120)"/><circle class="node" cx="205" cy="82" r="3"/></g><g class="ring reverse"><circle cx="120" cy="120" r="67"/><circle class="node" cx="120" cy="53" r="3"/></g><path d="M120 8v26m0 172v26M8 120h26m172 0h26M111 120h18m-9-9v18"/><path class="orbit-dash" d="M32 120C32 8 208 8 208 120S32 232 32 120"/><path d="M26 60l35 14 19-29 44 13 32-18 39 34"/><circle class="orbit-spark" cx="61" cy="74" r="2.8"/><circle class="orbit-spark" cx="124" cy="58" r="2.8"/><circle class="node-center" cx="120" cy="120" r="19"/><text x="120" y="123" text-anchor="middle">DATA</text><text x="120" y="235" text-anchor="middle">CONNECT THE DOTS.</text></svg><span class="orbit-pill one">DATA → INSIGHT</span><span class="orbit-pill two">CURIOUS BY NATURE</span><span class="orbit-pill three">01 / CONNECT THE DOTS</span></div><h1 class="wordmark" id="hero-name" aria-label="Joey"><span class="wordmark-letter" aria-hidden="true">J</span><span class="wordmark-letter" aria-hidden="true">O</span><span class="wordmark-letter accent" aria-hidden="true">E</span><span class="wordmark-letter accent" aria-hidden="true">Y</span><span class="wordmark-letter dot" aria-hidden="true">.</span></h1>
+ <div class="hero-caption"><div class="hero-name"><h2>王哲豪 / Joey Wang</h2><p>信息管理与信息系统背景<br>数据分析研究 · 云平台产品实践<br>正在寻找职业机会</p></div><p class="hero-statement">从数据里找到线索，<br>让分析回应<strong>真实的问题。<svg class="insight-underline" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q87 -1 198 5 M22 11 Q104 3 181 9"/></svg></strong></p><aside class="focus-note" aria-label="关注方向"><p class="eyebrow">CURRENT AREAS OF INTEREST</p><span>01 / 数据分析与业务洞察</span><span>02 / 云平台与产品实践</span><span>03 / 技术与业务的连接</span></aside></div></div>
+ <div class="hero-bottom"><a href="#work">打开项目档案 ↓</a><p>保持好奇，清晰思考。<br>STAY CURIOUS. THINK CLEARLY.</p></div>
+</section>
+<div class="signal-ribbon" aria-label="关注方向：数据分析、业务洞察、产品实践、持续探索"><div class="ribbon-track"><div class="ribbon-set" aria-hidden="true"><span>DATA ANALYSIS</span><b>✳</b><span>BUSINESS INSIGHTS</span><b>✳</b><span>PRODUCT THINKING</span><b>✳</b><span>STAY CURIOUS</span><b>✳</b></div><div class="ribbon-set" aria-hidden="true"><span>DATA ANALYSIS</span><b>✳</b><span>BUSINESS INSIGHTS</span><b>✳</b><span>PRODUCT THINKING</span><b>✳</b><span>STAY CURIOUS</span><b>✳</b></div></div></div>
+<section class="section wrap" id="work" aria-labelledby="work-title">
+ <div class="section-head"><div><p class="eyebrow">01 / RESEARCH FILES</p><h2 id="work-title">Selected work<i>.</i></h2></div><p>两个分析项目，两个业务场景。<br>从研究问题出发，经过数据与方法，回到洞察。</p></div>
+ <div class="work-layout"><div class="file-tabs" role="tablist" aria-label="选择分析项目"><button class="file-tab" type="button" role="tab" id="tab-live" aria-controls="panel-live" aria-selected="true"><span>FILE 01 / BUS303</span><strong>直播话术与 GMV</strong></button><button class="file-tab" type="button" role="tab" id="tab-finance" aria-controls="panel-finance" aria-selected="false"><span>FILE 02 / IOM301</span><strong>美股数据与投资策略</strong></button></div>
+ <div>
+  <article class="project-panel file-sheet" id="panel-live" role="tabpanel" aria-labelledby="tab-live" tabindex="0">
+   <div class="file-meta"><span>RESEARCH FILE / 01</span><span>FINAL YEAR PROJECT · BUS303</span></div>
+   <h3>抖音美妆直播促销话术<br>与短期 GMV 响应分析</h3><p class="file-summary">以花西子官方旗舰店直播为研究场景，探索促销话术强度与短期 GMV 波动之间的关联，将分钟级数据连接到具体运营问题。</p>
+   <div class="research-metrics"><div><strong>150</strong><span>有效分析样本</span></div><div><strong>t + 3</strong><span>分钟级事件窗口</span></div><div><strong>16.3–21.9%</strong><span>模型预测概率变化范围</span></div></div>
+   <p class="research-note">EXPLORATORY RESULT / 预测概率约由 16.3% 升至 21.9%，为关联趋势，不构成因果结论。</p>
+   <div class="research-row"><span>01 / DATA</span><p>基于 DouChaCha 获取直播 GMV、观看人数等数据，将促销话术与分钟级直播数据进行时间对齐和分类编码，形成 150 个有效样本。</p></div>
+   <div class="research-row"><span>02 / METHOD</span><p>采用事件型观察研究设计，以话术为事件点，构建 t 至 t+3 分钟 GMV spike 指标，使用二元 Logistic Regression 分析话术强度与 spike 概率的关联。</p></div>
+   <div class="research-row"><span>03 / INSIGHT</span><p>探索性模型呈现正向关联趋势；结合统计结果与业务场景，提出围绕流量时机、优惠券及产品展示的直播运营优化建议。</p></div>
+   <div class="tags"><span>EVENT-BASED STUDY</span><span>LOGISTIC REGRESSION</span><span>BUSINESS INSIGHTS</span></div><div class="file-sheet-footer"><span>王哲豪 / PROJECT NOTES</span><span>FILE 01 OF 02</span></div>
+  </article>
+  <article class="project-panel file-sheet" id="panel-finance" role="tabpanel" aria-labelledby="tab-finance" tabindex="0">
+   <div class="file-meta"><span>RESEARCH FILE / 02</span><span>PYTHON / WRDS · IOM301</span></div>
+   <h3>美股金融数据分析<br>与投资策略研究</h3><p class="file-summary">整合财务与股票收益数据，研究公司特征和收益表现之间的关系，从清洗、匹配到回归分析，形成有数据依据的策略建议。</p>
+   <div class="research-metrics"><div><strong>29,266</strong><span>公司年度样本</span></div><div><strong>19</strong><span>数据集变量</span></div><div><strong>OLS</strong><span>回归分析方法</span></div></div>
+   <p class="research-note">ACADEMIC RESEARCH / 策略建议用于展示研究思路，不代表已实现的投资收益。</p>
+   <div class="research-row"><span>01 / DATA</span><p>基于 WRDS 获取并合并 Compustat 财务数据与 CRSP 月度股票收益数据，完成清洗与匹配，构建 29,266 个公司年度样本、19 个变量的数据集。</p></div>
+   <div class="research-row"><span>02 / METHOD</span><p>使用 Python 开展 EDA 与 OLS 回归，分析 ROA、杠杆率、利润率、公司规模及收益波动率等因素，制作相关性矩阵、变量分布及年度收益趋势可视化。</p></div>
+   <div class="research-row"><span>03 / INSIGHT</span><p>结合统计分析和图表结果，形成基本面与价格动量相结合的投资策略建议。</p></div>
+   <div class="tags"><span>PYTHON</span><span>WRDS / COMPUSTAT / CRSP</span><span>EDA / OLS</span></div><div class="file-sheet-footer"><span>王哲豪 / PROJECT NOTES</span><span>FILE 02 OF 02</span></div>
+  </article>
+ </div></div>
+</section>
+<section class="section wrap experience-section" id="experience" aria-labelledby="experience-title">
+ <div class="section-head"><div><p class="eyebrow">02 / FIELD NOTES</p><h2 id="experience-title">Experience<i>.</i></h2></div><p>在实际的产品、质量与研究任务里，<br>积累分析问题和协同解决问题的经验。</p></div>
+ <div class="experience-grid">
+  <article class="experience-card"><p class="date">01 / 2025.07 — 2025.08 · 杭州</p><h3>杭州谐云科技<br>有限责任公司</h3><p class="role">云平台产品实习生</p><ul><li>梳理系统操作流程、权限规则及故障排查方案，完成产品手册与超级管理员手册建设，上线后提升内部培训效率约 30%。</li><li>负责租户管理系统全场景测试与问题归类，识别并提交 17 项系统问题，推动 3 项高优先级问题在上线前修复。</li></ul><div class="outcome"><span>产品文档 / 质量分析</span><b>17 ISSUES</b></div></article>
+  <article class="experience-card"><p class="date">02 / 2024.06 — 2024.08 · 北京</p><h3>建信金融科技<br>有限责任公司</h3><p class="role">云平台实习生</p><ul><li>负责 2 个云平台投产项目的测试实施，制定功能与回归测试方案，协同开发团队定位并解决异常问题。</li><li>负责 ticbaseV2 版本测试方案、用例评审及缺陷闭环跟踪。</li><li>针对 GreatDB 主从切换性能开展专项测试与问题定位，通过参数调整与流程优化提升切换效率。</li></ul><div class="outcome"><span>测试实施 / 缺陷闭环</span><b>2 PROJECTS</b></div></article>
+  <article class="experience-card"><p class="date">03 / 2024.01 — 2024.03 · 杭州</p><h3>中财集团绿汀投资<br>有限公司</h3><p class="role">日常实习生</p><ul><li>跟踪企业财报及运营数据，收集、整理与汇总关键财务信息，为投资研究提供数据支持。</li><li>参与投资研究报告审核与股票交易执行，协助提升研究材料准确性及交易执行合规性。</li></ul><div class="outcome"><span>财务数据整理 / 研究支持</span><b>RESEARCH</b></div></article>
+ </div>
+</section>
+<section class="section wrap archive-section" id="about" aria-labelledby="archive-title">
+ <div class="archive-cover"><div class="archive-pages">
+  <div class="archive-top"><span>PERSONAL ARCHIVE / JOEY WANG</span><span>BACKGROUND &amp; BEYOND</span></div>
+  <h2 class="archive-heading" id="archive-title">在数据、技术与业务之间，<em>保持好奇。</em></h2>
+  <div class="archive-columns"><div>
+   <h3 class="archive-label">Education / 教育</h3><article class="school"><span>2022.09 — 2026.06</span><h4>西交利物浦大学</h4><p>信息管理与信息系统 · 本科</p><p>相关课程：机器学习、大数据分析、数据库基础、高级数据库管理、算法基础、电子商务系统。</p></article><article class="school"><span>2027.01 — 2028.05</span><h4>南加州大学</h4><p>分析学 · 硕士</p><small>未来学习时间 / 2027 年 1 月开始</small></article>
+   <h3 class="archive-label">Toolkit / 技能</h3><div class="tool-row"><b>数据分析</b><span>Python、Pandas、SQL、Excel；数据清洗、统计分析与可视化。</span></div><div class="tool-row"><b>数据库</b><span>Microsoft Access、关系型数据库基础。</span></div><div class="tool-row"><b>AI 工具</b><span>生成式 AI 辅助信息检索、数据分析、代码调试及报告撰写。</span></div><div class="tool-row"><b>语言</b><span>TOEFL 4.5 / 6.0</span></div>
+  </div><div>
+   <h3 class="archive-label">Honors / 荣誉</h3><ul class="archive-list"><li>国家励志奖学金<br>2023–24、2024–25</li><li>2023 苏州大学生艺术展<br>民乐项目二等奖</li></ul>
+   <h3 class="archive-label">Beyond work / 校园与内容</h3><ul class="archive-list"><li>校足球联队成员。</li><li>校羽毛球社管理层成员，社团获“2023 年度最佳社团”。</li><li>抖音自运营 IP 账号，粉丝数接近 2,000。</li></ul>
+   <section id="contact" aria-labelledby="contact-title"><h3 class="archive-label" id="contact-title">Front desk / 联系我</h3><p class="contact-note">欢迎交流合适的岗位与实习机会，也欢迎聊聊数据分析、产品和技术实践。<a class="email-link" href="mailto:18906814376@163.com"><span class="eyebrow">EMAIL / 发邮件给我</span><strong>18906814376@163.com</strong><span aria-hidden="true">↗</span></a></p><a class="contact-mark" href="mailto:18906814376@163.com">LET'S TALK. ↗</a></section>
+  </div></div>
+ </div></div>
+</section>
+</main>
+<div class="pointer-glow" aria-hidden="true"></div>
+<footer class="site-footer wrap"><span>© JOEY WANG / 王哲豪<br>PERSONAL PORTFOLIO · VOL. 01</span><a href="#home">BACK TO TOP ↑</a><span>保持好奇，持续成长。<br>END OF ARCHIVE.</span></footer>
+<script>
+// All content remains readable without JavaScript. Motion never gates access.
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+const motionAnimations = new Set();
+let activeIndex = 0;
+let panelAnimation;
+
+function play(element, frames, options) {
+  if (motionPreference.matches || !element.animate) return null;
+  const animation = element.animate(frames, options);
+  motionAnimations.add(animation);
+  const cleanup = () => motionAnimations.delete(animation);
+  animation.addEventListener('finish', cleanup, { once: true });
+  animation.addEventListener('cancel', cleanup, { once: true });
+  return animation;
+}
+
+function activateTab(index, moveFocus = false, animate = true) {
+  const changed = index !== activeIndex;
+  panelAnimation?.cancel();
+  tabs.forEach((tab, i) => {
+    tab.setAttribute('aria-selected', String(i === index));
+    tab.tabIndex = i === index ? 0 : -1;
+    panels[i].hidden = i !== index;
+  });
+  activeIndex = index;
+  if (moveFocus) tabs[index].focus();
+  if (animate && changed) {
+    const panel = panels[index];
+    panelAnimation = play(panel, [
+      { opacity: 0.2, transform: 'perspective(1000px) translateY(24px) rotateX(-5deg)' },
+      { opacity: 1, transform: 'perspective(1000px) translateY(0) rotateX(0)' },
+    ], { duration: 550, easing: 'cubic-bezier(.2,.75,.25,1)' });
+    panel.querySelectorAll('.research-row, .tags').forEach((row, i) => {
+      play(row, [{ opacity: 0, translate: '0 12px' }, { opacity: 1, translate: '0 0' }], {
+        duration: 360, delay: 90 + i * 65, easing: 'ease-out', fill: 'backwards',
+      });
+    });
+  }
+}
+
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateTab(index));
+  tab.addEventListener('keydown', (event) => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = tabs.length - 1;
+    if (next !== undefined) {
+      event.preventDefault();
+      activateTab(next, true);
+    }
+  });
+});
+document.documentElement.dataset.enhanced = 'true';
+activateTab(0, false, false);
+
+// Staggered name entrance, then the profile and handwritten-style underline.
+document.querySelectorAll('.wordmark-letter').forEach((letter, i) => {
+  play(letter, [
+    { opacity: 0, translate: '0 70px', rotate: '4deg', filter: 'blur(5px)' },
+    { opacity: 1, translate: '0 0', rotate: '0deg', filter: 'blur(0)' },
+  ], { duration: 850, delay: 80 + i * 100, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+});
+document.querySelectorAll('.hero-name, .hero-statement, .focus-note, .hero-bottom').forEach((element, i) => {
+  play(element, [{ opacity: 0, translate: '0 18px' }, { opacity: 1, translate: '0 0' }], {
+    duration: 650, delay: 350 + i * 100, easing: 'ease-out', fill: 'backwards',
+  });
+});
+const underline = document.querySelector('.insight-underline path');
+if (underline) {
+  const length = underline.getTotalLength();
+  play(underline, [{ strokeDasharray: length, strokeDashoffset: length },
+    { strokeDasharray: length, strokeDashoffset: 0 }], {
+    duration: 950, delay: 800, easing: 'ease-out', fill: 'backwards',
+  });
+}
+
+// Reveal on arrival, without initially hiding entire sections.
+const revealTargets = document.querySelectorAll('.section-head, .experience-card, .archive-cover, .file-tabs');
+if ('IntersectionObserver' in window) {
+  const reveals = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target;
+      play(element, [{ opacity: 0.15, translate: '0 30px' }, { opacity: 1, translate: '0 0' }], {
+        duration: 700, easing: 'cubic-bezier(.16,1,.3,1)',
+        delay: element.classList.contains('experience-card') ? Array.from(element.parentElement.children).indexOf(element) * 85 : 0,
+      });
+      reveals.unobserve(element);
+    });
+  }, { threshold: 0.07 });
+  revealTargets.forEach((element) => reveals.observe(element));
+}
+
+// Fine-pointer-only depth, preserving standard mouse and keyboard behavior.
+document.querySelectorAll('.experience-card, .focus-note').forEach((card) => {
+  let pointerFrame = 0;
+  card.addEventListener('pointermove', (event) => {
+    if (!finePointer.matches || motionPreference.matches) return;
+    cancelAnimationFrame(pointerFrame);
+    const { clientX, clientY } = event;
+    pointerFrame = requestAnimationFrame(() => {
+      const bounds = card.getBoundingClientRect();
+      const x = Math.max(-0.5, Math.min(0.5, (clientX - bounds.left) / bounds.width - 0.5));
+      const y = Math.max(-0.5, Math.min(0.5, (clientY - bounds.top) / bounds.height - 0.5));
+      card.style.setProperty('--tilt-x', `${-y * 7}deg`);
+      card.style.setProperty('--tilt-y', `${x * 7}deg`);
+      card.style.setProperty('--card-lift', '-5px');
+    });
+  });
+  card.addEventListener('pointerleave', () => {
+    cancelAnimationFrame(pointerFrame);
+    card.style.removeProperty('--tilt-x');
+    card.style.removeProperty('--tilt-y');
+    card.style.removeProperty('--card-lift');
+  });
+});
+
+const progress = document.querySelector('.reading-progress');
+const wordmark = document.querySelector('.wordmark');
+const archive = document.querySelector('.archive-cover');
+const hero = document.querySelector('.hero');
+let scrollFrame = 0;
+function updateScroll() {
+  scrollFrame = 0;
+  const range = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${range > 0 ? Math.min(1, Math.max(0, scrollY / range)) : 0})`;
+  if (!motionPreference.matches && innerWidth > 700) {
+    const offset = Math.max(0, Math.min(65, -hero.getBoundingClientRect().top * 0.09));
+    wordmark.style.translate = `0 ${offset}px`;
+    const distance = Math.max(0, Math.min(1, (archive.getBoundingClientRect().top - innerHeight * 0.25) / innerHeight));
+    archive.style.setProperty('--book-angle', `${distance * 5}deg`);
+  } else {
+    wordmark.style.removeProperty('translate');
+    archive.style.removeProperty('--book-angle');
+  }
+  const navigation = Array.from(document.querySelectorAll('.site-header nav a'));
+  let current = '';
+  const sections = navigation.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  sections.forEach(section => { if (section.getBoundingClientRect().top <= innerHeight * 0.4) current = section.id; });
+  navigation.forEach(link => {
+    if (link.hash === `#${current}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+function scheduleScroll() {
+  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll);
+}
+addEventListener('scroll', scheduleScroll, { passive: true });
+addEventListener('resize', scheduleScroll, { passive: true });
+motionPreference.addEventListener('change', () => {
+  if (motionPreference.matches) motionAnimations.forEach(animation => animation.cancel());
+  document.querySelectorAll('[style]').forEach(element => {
+    ['--tilt-x', '--tilt-y', '--card-lift'].forEach(property => element.style.removeProperty(property));
+  });
+  scheduleScroll();
+});
+updateScroll();
+
+// A soft pointer glow on desktop; touch and reduced-motion users keep a static page.
+const pointerGlow = document.querySelector('.pointer-glow');
+let glowFrame = 0;
+addEventListener('pointermove', (event) => {
+  if (!pointerGlow || !finePointer.matches || motionPreference.matches || innerWidth <= 700) return;
+  cancelAnimationFrame(glowFrame);
+  const { clientX, clientY } = event;
+  glowFrame = requestAnimationFrame(() => {
+    pointerGlow.style.transform = `translate(${clientX}px, ${clientY}px)`;
+    pointerGlow.style.opacity = '1';
+  });
+}, { passive: true });
+document.documentElement.addEventListener('pointerleave', () => {
+  cancelAnimationFrame(glowFrame);
+  if (pointerGlow) pointerGlow.style.opacity = '0';
+});
+addEventListener('blur', () => {
+  if (pointerGlow) pointerGlow.style.opacity = '0';
+});
+
+</script>
+</body>
+</html>
