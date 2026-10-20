@@ -133,14 +133,19 @@ html{scrollbar-gutter:stable}html[data-intro="loading"],html[data-intro="leaving
 .intro-percent{display:inline-block;min-width:2ch}.intro-unit{font-size:.5em;letter-spacing:0;margin-left:6px}
 .intro-line{--progress:0%;--cell:28px;position:relative;height:clamp(32px,3.4vw,48px);padding:4px;border:2px solid #36536a;background:#d4dfe3;box-shadow:4px 4px 0 #36536a30}
 .intro-track{height:100%;overflow:hidden;background:repeating-linear-gradient(90deg,#bcced6 0 calc(var(--cell) - 3px),#a7bdc8 calc(var(--cell) - 3px) var(--cell));box-shadow:inset 0 2px 0 #36536a20}
-.intro-fill{position:relative;width:100%;height:100%;clip-path:inset(0 calc(100% - var(--progress)) 0 0);background:linear-gradient(180deg,#ffffff66 0 3px,transparent 3px calc(100% - 4px),#23374530 calc(100% - 4px)),repeating-linear-gradient(90deg,transparent 0 calc(var(--cell) - 3px),#23374540 calc(var(--cell) - 3px) var(--cell)),linear-gradient(90deg,#4a7ddc 0%,#3ac2d5 28%,#6cd7a8 52%,#eed46c 77%,#ee9664 100%)}
+.intro-fill{position:relative;width:100%;height:100%;clip-path:inset(0 calc(100% - var(--progress)) 0 0);background:linear-gradient(180deg,#ffffff66 0 3px,transparent 3px calc(100% - 4px),#23374530 calc(100% - 4px)),repeating-linear-gradient(90deg,transparent 0 calc(var(--cell) - 3px),#23374540 calc(var(--cell) - 3px) var(--cell)),repeating-linear-gradient(90deg,#4a7ddc 0%,#3ac2d5 14%,#6cd7a8 26%,#eed46c 38.5%,#ee9664 46%,#4a7ddc 50%);background-size:auto,auto,200% 100%;animation:intro-color-flow 3.2s linear infinite}
 .intro-fill::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,#ffffff88 50%,transparent 60%);background-size:250% 100%;animation:intro-scan 1.4s linear infinite}
+.intro-wave{position:absolute;inset:0 auto 0 0;width:200%;height:100%;animation:intro-wave-flow 1.8s linear infinite;pointer-events:none}
 .intro-head{position:absolute;inset:4px;pointer-events:none}
-.intro-head::after{content:"";position:absolute;top:0;bottom:0;left:clamp(0px,var(--progress),calc(100% - 3px));width:3px;background:#f5ffea;box-shadow:0 0 8px #a8ffe8,0 0 16px #7de5e277}
+.intro-front{position:absolute;top:0;left:var(--progress);width:24px;height:100%;transform:translateX(-50%);overflow:visible;filter:drop-shadow(0 0 4px #adffe1)}
+.intro-front path{fill:none;stroke:#edfff2;stroke-width:2;vector-effect:non-scaling-stroke}
+.intro-line[aria-valuenow="0"] .intro-front{visibility:hidden}
 .intro-spark{position:absolute;left:clamp(10px,var(--progress),calc(100% - 10px));bottom:calc(100% + 9px);width:20px;height:20px;filter:drop-shadow(2px 2px 0 #36536a44);animation:intro-hop .5s steps(3,end) infinite;pointer-events:none}
 .intro-spark svg{display:block;width:100%;height:100%;shape-rendering:crispEdges}
 .intro-line[aria-valuenow="100"] .intro-spark{animation:intro-clear .45s steps(3,end) both}
 @keyframes intro-scan{from{background-position:150% 0}to{background-position:-100% 0}}
+@keyframes intro-color-flow{from{background-position:0 0,0 0,100% 0}to{background-position:0 0,0 0,0% 0}}
+@keyframes intro-wave-flow{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @keyframes intro-hop{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
 @keyframes intro-clear{0%{transform:translateX(-50%) translateY(0) scale(1)}50%{transform:translateX(-50%) translateY(-12px) scale(1.25)}100%{transform:translateX(-50%) translateY(-6px) scale(1)}}
 @media(max-width:700px){.intro-line{--cell:18px;padding:3px;box-shadow:3px 3px 0 #36536a30}.intro-head{inset:3px}.intro-spark{width:16px;height:16px;bottom:calc(100% + 8px)}}
@@ -349,7 +354,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 </head>
 <body>
 <div class="intro-screen" hidden aria-label="作品集进场动画">
- <div class="intro-progress"><div class="intro-count" aria-hidden="true"><span class="intro-percent">00</span><span class="intro-unit">%</span></div><div class="intro-line" role="progressbar" aria-label="进场动画进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="intro-track"><div class="intro-fill"></div></div><div class="intro-head" aria-hidden="true"><span class="intro-spark"><svg viewBox="0 0 16 16"><path d="M6 0h4v4h6v4h-4v4h2v4h-4v-2H6v2H2v-4h2V8H0V4h6Z" fill="#f3d56c"/><path d="M6 6h1v3H6zm3 0h1v3H9z" fill="#36536a"/><path d="M7 1h2v3H7zM1 5h3v1H1z" fill="#fff2bb"/></svg></span></div></div></div>
+ <div class="intro-progress"><div class="intro-count" aria-hidden="true"><span class="intro-percent">00</span><span class="intro-unit">%</span></div><div class="intro-line" role="progressbar" aria-label="进场动画进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="intro-track"><div class="intro-fill"><svg class="intro-wave" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20C25 4 75 4 100 20S175 36 200 20S275 4 300 20S375 36 400 20V40H0Z" fill="#efffe9" opacity=".24"/><path d="M0 28C25 18 75 18 100 28S175 38 200 28S275 18 300 28S375 38 400 28V40H0Z" fill="#e1fbff" opacity=".22"/></svg></div></div><div class="intro-head" aria-hidden="true"><svg class="intro-front" viewBox="0 0 24 100" preserveAspectRatio="none"><path d="M12 0V100"/></svg><span class="intro-spark"><svg viewBox="0 0 16 16"><path d="M6 0h4v4h6v4h-4v4h2v4h-4v-2H6v2H2v-4h2V8H0V4h6Z" fill="#f3d56c"/><path d="M6 6h1v3H6zm3 0h1v3H9z" fill="#36536a"/><path d="M7 1h2v3H7zM1 5h3v1H1z" fill="#fff2bb"/></svg></span></div></div></div>
 </div>
 <script>
 // Early activation, with a fallback independent of the page enhancement script.
@@ -433,6 +438,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
   const screen = document.querySelector('.intro-screen');
   const number = screen.querySelector('.intro-percent');
   const progressBar = screen.querySelector('[role="progressbar"]');
+  const fill = screen.querySelector('.intro-fill');
+  const front = screen.querySelector('.intro-front path');
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const background = [...document.querySelectorAll('.site-header, #main, .site-footer, .skip-link')];
   let frame = 0, closeTimer = 0, active = false, run = 0;
@@ -441,6 +448,16 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
     number.textContent = String(value).padStart(2, '0');
     progressBar.style.setProperty('--progress', `${value}%`);
     progressBar.setAttribute('aria-valuenow', String(value));
+    // A small travelling crest leads the fill; flatten it at 0 and 100%.
+    const amplitude = Math.sin(value * Math.PI / 100) * 6;
+    const phase = performance.now() / 180;
+    const edge = Array.from({ length: 17 }, (_, i) => {
+      const y = i / 16 * 100;
+      const x = Math.sin(i / 16 * Math.PI * 2 - phase) * amplitude;
+      return { x, y };
+    });
+    fill.style.clipPath = `polygon(0 0, ${edge.map(({ x, y }) => `calc(${value}% + ${x.toFixed(2)}px) ${y}%`).join(', ')}, 0 100%)`;
+    front.setAttribute('d', edge.map(({ x, y }, i) => `${i ? 'L' : 'M'}${(12 + x).toFixed(2)} ${y}`).join(' '));
   };
   function finish(immediate = false) {
     if (!active) return;
