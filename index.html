@@ -9,6 +9,7 @@
 <style>
 
 
+
 :root{--paper:#f3f4f2;--ink:#25303b;--muted:#6b747a;--rose:#355d76;--line:#ccd2d5;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--serif:Georgia,"Times New Roman","Songti SC",SimSun,serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;color:var(--ink);background:var(--paper);font:14px/1.85 system-ui,"Microsoft YaHei",sans-serif;background-image:radial-gradient(#5c687210 .65px,transparent .7px);background-size:5px 5px}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}a:hover{color:var(--rose)}button,a,summary{-webkit-tap-highlight-color:transparent}:focus-visible{outline:2px solid var(--rose);outline-offset:5px}.wrap{width:min(1240px,calc(100% - 80px));margin-inline:auto}.eyebrow{font:10px/1.5 var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:0 0 20px}.rose{color:var(--rose)}.mono{font-family:var(--mono)}.muted{color:var(--muted)}.skip-link{position:fixed;top:-100px;left:10px;background:var(--ink);color:var(--paper);padding:10px;z-index:10}.skip-link:focus{top:10px}.site-header{height:88px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.brand{font:15px var(--mono);letter-spacing:2px}.brand b{display:inline-grid;place-items:center;font:26px var(--serif);width:35px;height:35px;background:var(--rose);color:var(--paper);margin-right:9px}.site-header nav{display:flex;gap:32px;font:10px var(--mono);letter-spacing:1px}.availability{font:9px var(--mono);letter-spacing:1px;display:flex;align-items:center;gap:8px}.availability::before{content:"";width:6px;height:6px;background:#74825b;border-radius:50%;box-shadow:0 0 0 4px #74825b12}
 .hero{padding-top:27px;position:relative}.hero-topline{display:flex;justify-content:space-between;font:9px var(--mono);letter-spacing:1.5px;color:var(--muted)}.hero-stage{position:relative;margin-top:20px;border-bottom:1px solid var(--line);padding-bottom:65px}.wordmark{font:400 clamp(100px,23.5vw,335px)/.95 var(--serif);letter-spacing:-.075em;margin:0 0 35px;white-space:nowrap;position:relative;z-index:1}.wordmark>span{color:var(--rose)}.wordmark>i{font-style:normal;font-size:.65em;color:var(--rose);margin-left:.025em}.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#6f819113 1px,transparent 1px),linear-gradient(90deg,#6f819113 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(transparent,#0009,transparent)}.hero-caption{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:35px;position:relative;z-index:1;align-items:end}.hero-name h2{font-size:20px;font-weight:600;margin:0 0 12px}.hero-name p{font:10px/1.9 var(--mono);color:var(--muted);margin:0}.focus-note{justify-self:end;width:220px;border:1px solid var(--line);background:#f8f9f6;padding:18px 21px;transform:rotate(3deg);box-shadow:4px 5px 0 #34495d08}.focus-note .eyebrow{font-size:8px;margin-bottom:12px}.focus-note span{display:block;border-top:1px solid #d5dcdf;padding-top:7px;margin-top:7px;font-size:11px}.hero-bottom{display:flex;justify-content:space-between;align-items:center;padding-block:20px;font:10px var(--mono)}.hero-bottom a{border-bottom:1px solid var(--rose);padding-bottom:5px;color:var(--rose)}.hero-bottom p{margin:0;color:var(--muted);font-size:9px}
@@ -27,9 +28,9 @@
 /* Motion edition — fully local and optional. */
 .reading-progress{height:3px;position:fixed;top:0;left:0;right:0;z-index:100;background:var(--rose);transform:scaleX(0);transform-origin:left center;pointer-events:none}
 .wordmark{position:relative;will-change:translate;isolation:isolate}
-.wordmark>.wordmark-letter{color:inherit;display:inline-block;transform-origin:bottom center}
-.wordmark>.wordmark-letter.accent{color:var(--rose)}
-.wordmark>.wordmark-letter.dot{font-size:.65em;color:var(--rose);margin-left:.025em}
+.wordmark .wordmark-letter{color:inherit;display:inline-block;transform-origin:bottom center}
+.wordmark .wordmark-letter.accent{color:var(--rose)}
+.wordmark .wordmark-letter.dot{font-size:.65em;color:var(--rose);margin-left:.025em}
 
 
 .orbit-art{position:absolute;right:1%;top:8%;width:240px;height:240px;color:var(--rose);opacity:.55;pointer-events:none;z-index:0}
@@ -48,7 +49,7 @@
 /* Expressive blue edition: stronger hierarchy and data-inspired decoration. */
 :root{--spark:#4677d5;--teal:#40808c}
 .site-header nav{font-family:system-ui,"Microsoft YaHei",sans-serif;font-size:16px;font-weight:550;letter-spacing:2px;gap:36px}.site-header nav a{padding:10px 0}.site-header nav a::after{bottom:3px;height:2px}
-.hero-name h2{font-size:30px;font-weight:650;line-height:1.5;letter-spacing:-.5px;margin-bottom:16px}.hero-name p{font-family:system-ui,"Microsoft YaHei",sans-serif;font-size:15px;line-height:2;color:#526574}.hero-caption{gap:36px}.hero-stage::before{content:"";position:absolute;right:-15px;top:-45px;width:430px;height:430px;max-width:75%;border-radius:50%;background:radial-gradient(ellipse,#8bb9df39 0%,#b4c9e424 33%,transparent 70%);pointer-events:none}.hero-grid{background-size:48px 48px;opacity:.8}.wordmark>.wordmark-letter.accent{background:linear-gradient(145deg,#34566d 18%,#426da6 65%,#6394bb);background-clip:text;-webkit-background-clip:text;color:transparent}.wordmark>.wordmark-letter.dot{color:var(--spark)}
+.hero-name h2{font-size:30px;font-weight:650;line-height:1.5;letter-spacing:-.5px;margin-bottom:16px}.hero-name p{font-family:system-ui,"Microsoft YaHei",sans-serif;font-size:15px;line-height:2;color:#526574}.hero-caption{gap:36px}.hero-stage::before{content:"";position:absolute;right:-15px;top:-45px;width:430px;height:430px;max-width:75%;border-radius:50%;background:radial-gradient(ellipse,#8bb9df39 0%,#b4c9e424 33%,transparent 70%);pointer-events:none}.hero-grid{background-size:48px 48px;opacity:.8}.wordmark .wordmark-letter.accent{background:linear-gradient(145deg,#34566d 18%,#426da6 65%,#6394bb);background-clip:text;-webkit-background-clip:text;color:transparent}.wordmark .wordmark-letter.dot{color:var(--spark)}
 .orbit-art{width:310px;height:310px;right:.5%;top:-1%;opacity:.8}.orbit-art .ring:first-of-type{animation-duration:30s}.orbit-art .orbit-dash{stroke:var(--spark);stroke-width:1.5;stroke-dasharray:10 12;animation:data-path 12s linear infinite}.orbit-art .orbit-spark{fill:var(--spark);stroke:none;transform-origin:center;animation:node-breathe 5s ease-in-out infinite}.orbit-art .node-center{fill:#f4f7fb;stroke-width:1.3}.orbit-pill{position:absolute;font:9px/1.2 var(--mono);letter-spacing:.7px;padding:9px 12px;border:1px solid #91acbf;background:#f6f9f8e8;color:#38566f;box-shadow:3px 4px 0 #355d760b;white-space:nowrap;animation:label-float 8s ease-in-out infinite}.orbit-pill.one{top:18%;left:-13%;rotate:-8deg}.orbit-pill.two{bottom:12%;right:-2%;rotate:7deg;animation-delay:-4s}.orbit-pill.three{bottom:1%;left:0;rotate:-3deg;font-size:8px;animation-delay:-2s}.focus-note{border-color:#9eafbb;background:linear-gradient(135deg,#fffef9,#e9f0f4);box-shadow:6px 8px 0 #355d760b}.focus-note::before{content:"✳";position:absolute;right:12px;top:-27px;font:43px var(--serif);color:var(--spark);animation:slow-star 35s linear infinite}.focus-note span{font-size:12px;line-height:1.6}.hero-bottom a{font-size:12px}.hero-bottom p{font-size:10px;line-height:1.7}
 .signal-ribbon{overflow:hidden;border-block:1px solid #adc1cf;background:linear-gradient(100deg,#e2ebee,#dce6f4 60%,#e0eaeb);margin-top:16px;position:relative}.signal-ribbon::before,.signal-ribbon::after{content:"";position:absolute;top:0;bottom:0;width:55px;pointer-events:none;z-index:1}.signal-ribbon::before{left:0;background:linear-gradient(90deg,#e2ebee,transparent)}.signal-ribbon::after{right:0;background:linear-gradient(270deg,#e0eaeb,transparent)}.ribbon-track{display:flex;width:max-content;animation:ribbon-scroll 32s linear infinite}.ribbon-set{display:flex;align-items:center;justify-content:space-around;gap:48px;flex-shrink:0;padding:15px 24px;font:11px var(--mono);letter-spacing:2px;color:#3d5d74}.ribbon-set b{font:24px var(--serif);color:var(--spark)}.signal-ribbon:hover .ribbon-track{animation-play-state:paused}
 .file-tab{border-color:#adbdc8}.file-tab[aria-selected=true]{background:linear-gradient(120deg,#31556e,#4a73a2);box-shadow:4px 5px 0 #365e7520}.file-tab[aria-selected=true]::after{font-size:19px;top:9px}.file-tab:hover{box-shadow:5px 6px 0 #365e7510}.file-sheet{border-color:#9eafbb;background:linear-gradient(135deg,#fbfcf7,#f2f6f8);box-shadow:8px 10px 0 #dbe3e7,9px 11px 0 #a4b5bf;transition:box-shadow .35s}.file-sheet:hover{box-shadow:10px 14px 0 #d4dfe5,11px 15px 0 #a4b5bf}.file-sheet::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--spark),transparent);background-size:200% 100%;animation:sheet-glint 6s ease-in-out infinite}.file-summary,.research-row>p{font-size:14px;line-height:1.95}.file-meta{font-size:10px}.research-row>span{font-size:10px}.research-metrics{background:linear-gradient(95deg,#e1eaf23d,#fff0,#e4eeef5c);border-color:#bdcbd4}.research-metrics strong{color:#355d76}.research-metrics span{font-size:12px}.research-note{font-size:10px}.experience-card{background:linear-gradient(145deg,#ecede7,#e1e6e7);border-color:#aebec9}.experience-card:nth-child(2){background:linear-gradient(145deg,#e7eef5,#dce6ef)}.experience-card:nth-child(3){background:linear-gradient(145deg,#edf0e8,#dde8e5)}.experience-card .date{font-size:11px}.experience-card .role{font-size:13px}.experience-card li{font-size:13px}.experience-card .outcome{font-size:10px}.experience-card:hover{box-shadow:0 20px 32px #345c7b25}.experience-card::after{content:"+";position:absolute;right:14px;top:9px;font:19px var(--mono);color:#477ca9}.archive-cover{border-color:#92a8b7;box-shadow:0 17px 40px #355d761b}.archive-top{font-size:9px}.school h4{font-size:18px}.school p,.tool-row,.archive-list li,.contact-note{font-size:13px}.archive-label{font-size:23px}.school small{font-size:10px}.email-link strong{font-size:14px}.contact-mark{padding:13px 20px;background:#e7eff3;box-shadow:4px 5px 0 #3f648b13}.contact-mark:hover{background:#355d76;color:#f6f8fa;box-shadow:7px 8px 0 #3f648b18}
@@ -63,7 +64,7 @@
 @media(max-width:700px){.site-header{display:grid;grid-template-columns:1fr;height:auto;gap:9px;padding-block:13px 8px}.site-header .brand{font-size:13px}.site-header nav{width:100%;justify-content:space-between;gap:14px;font-size:15px;letter-spacing:1px}.site-header nav a{padding:5px 0}.site-header nav a::after{bottom:0}.hero-name h2{font-size:26px;line-height:1.55;margin-bottom:12px}.hero-name p{font-size:14px;line-height:2}.hero-caption{gap:23px}.hero-stage::before{top:-50px;right:0;width:270px;height:270px;max-width:100%;opacity:.85}.hero-bottom a{font-size:11px}.hero-bottom p{font-size:9px}.signal-ribbon{margin-top:4px}.ribbon-set{font-size:10px;gap:27px;padding:13px 20px;letter-spacing:1px}.ribbon-set b{font-size:21px}.file-meta{font-size:8px}.file-summary,.research-row>p{font-size:13px}.research-row{grid-template-columns:65px 1fr}.research-row>span{font-size:9px}.research-metrics span{font-size:11px}.research-note{font-size:9px}.experience-card .date{font-size:10px}.experience-card li{font-size:13px}.archive-top{font-size:7px}.school p,.tool-row,.archive-list li,.contact-note{font-size:13px}.email-link strong{font-size:13px}.pointer-glow{display:none}html{scroll-padding-top:130px}}
 @media(hover:none),(pointer:coarse){.pointer-glow{display:none}}
 @media(prefers-reduced-motion:reduce){.orbit-art *,.orbit-pill,.ribbon-track,.focus-note::before,.file-sheet::after{animation:none!important}.pointer-glow{display:none}}
-@media print{.signal-ribbon,.pointer-glow,.orbit-art,.focus-note::before{display:none!important}.wordmark>.wordmark-letter.accent{background:none;color:var(--rose)}.file-sheet,.experience-card{background:white}.site-header{display:flex}}
+@media print{.signal-ribbon,.pointer-glow,.orbit-art,.focus-note::before{display:none!important}.wordmark .wordmark-letter.accent{background:none;color:var(--rose)}.file-sheet,.experience-card{background:white}.site-header{display:flex}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
 /* LinkedIn-aligned profile; no decorative slogan or abstract sculpture. */
@@ -84,6 +85,20 @@
 @media(max-width:1050px){.project-covers{gap:10px}.research-cover{padding:13px 10px}.research-cover h3{font-size:17px}.research-cover>strong{font-size:28px}.research-cover>p{font-size:8px}.cover-top{font-size:6px}.cover-bottom{font-size:5px;letter-spacing:0}}
 @media(max-width:700px){.project-covers{width:min(100%,420px);justify-self:center;gap:14px}.research-cover{padding:16px}.research-cover h3{font-size:21px}.research-cover>strong{font-size:34px}.research-cover>p{font-size:10px}.cover-top{font-size:8px;letter-spacing:.2px}.cover-bottom{font-size:7px}}
 
+
+/* Gently left-tilted identity, separate from scroll parallax and letter entrance. */
+.wordmark{overflow:visible;margin-top:18px;margin-bottom:44px}
+.wordmark>.wordmark-motion{display:inline-block;color:var(--ink);transform-origin:50% 68%;transform:translate3d(var(--name-pan-x,0px),var(--name-pan-y,0px),0) rotate(calc(-3deg + var(--name-turn,0deg))) skewX(1.5deg);transition:transform .65s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.wordmark-float{display:inline-block;transform-origin:50% 75%;animation:wordmark-float 9s ease-in-out infinite;will-change:transform}
+.wordmark .wordmark-letter.accent{background-size:180% 180%;animation:wordmark-ink 14s ease-in-out infinite}
+.wordmark .wordmark-letter.dot{animation:wordmark-dot 6s ease-in-out infinite;transform-origin:center 75%}
+@keyframes wordmark-float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-7px) rotate(-.45deg)}}
+@keyframes wordmark-ink{0%,100%{background-position:0% 20%}50%{background-position:100% 80%}}
+@keyframes wordmark-dot{0%,100%{opacity:.8;scale:1}50%{opacity:1;scale:1.035}}
+@media(max-width:700px){.wordmark{margin-top:11px;margin-bottom:30px}.wordmark>.wordmark-motion{transform:rotate(-3deg) skewX(1.5deg);will-change:auto}.wordmark-float{animation-duration:10s;will-change:auto}@keyframes wordmark-float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-3px) rotate(-.25deg)}}}
+@media(prefers-reduced-motion:reduce){.wordmark>.wordmark-motion,.wordmark-float{will-change:auto}.wordmark-float,.wordmark .wordmark-letter.accent,.wordmark .wordmark-letter.dot{animation:none!important}.wordmark>.wordmark-motion{transition:none!important;transform:rotate(-3deg) skewX(1.5deg)}}
+@media print{.wordmark>.wordmark-motion,.wordmark-float{transform:none!important;animation:none!important;will-change:auto}.wordmark .wordmark-letter{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -93,7 +108,7 @@
 <main id="main">
 <section class="hero wrap" id="home" aria-labelledby="hero-name">
  <div class="hero-topline"><span>PERSONAL ARCHIVE / VOL. 01</span><span>DATA · TECHNOLOGY · BUSINESS</span></div>
- <div class="hero-stage"><div class="hero-grid" aria-hidden="true"></div><div class="orbit-art" aria-hidden="true"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="88" stroke-dasharray="2 5"/><g class="ring"><ellipse cx="120" cy="120" rx="103" ry="44" fill="none" stroke="currentColor" stroke-width=".6" transform="rotate(-35 120 120)"/><circle class="node" cx="205" cy="82" r="3"/></g><g class="ring reverse"><circle cx="120" cy="120" r="67"/><circle class="node" cx="120" cy="53" r="3"/></g><path d="M120 8v26m0 172v26M8 120h26m172 0h26M111 120h18m-9-9v18"/><path class="orbit-dash" d="M32 120C32 8 208 8 208 120S32 232 32 120"/><path d="M26 60l35 14 19-29 44 13 32-18 39 34"/><circle class="orbit-spark" cx="61" cy="74" r="2.8"/><circle class="orbit-spark" cx="124" cy="58" r="2.8"/><circle class="node-center" cx="120" cy="120" r="19"/><text x="120" y="123" text-anchor="middle">DATA</text><text x="120" y="235" text-anchor="middle">CONNECT THE DOTS.</text></svg><span class="orbit-pill one">DATA → INSIGHT</span><span class="orbit-pill two">CURIOUS BY NATURE</span><span class="orbit-pill three">01 / CONNECT THE DOTS</span></div><h1 class="wordmark" id="hero-name" aria-label="Joey"><span class="wordmark-letter" aria-hidden="true">J</span><span class="wordmark-letter" aria-hidden="true">O</span><span class="wordmark-letter accent" aria-hidden="true">E</span><span class="wordmark-letter accent" aria-hidden="true">Y</span><span class="wordmark-letter dot" aria-hidden="true">.</span></h1>
+ <div class="hero-stage"><div class="hero-grid" aria-hidden="true"></div><div class="orbit-art" aria-hidden="true"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="88" stroke-dasharray="2 5"/><g class="ring"><ellipse cx="120" cy="120" rx="103" ry="44" fill="none" stroke="currentColor" stroke-width=".6" transform="rotate(-35 120 120)"/><circle class="node" cx="205" cy="82" r="3"/></g><g class="ring reverse"><circle cx="120" cy="120" r="67"/><circle class="node" cx="120" cy="53" r="3"/></g><path d="M120 8v26m0 172v26M8 120h26m172 0h26M111 120h18m-9-9v18"/><path class="orbit-dash" d="M32 120C32 8 208 8 208 120S32 232 32 120"/><path d="M26 60l35 14 19-29 44 13 32-18 39 34"/><circle class="orbit-spark" cx="61" cy="74" r="2.8"/><circle class="orbit-spark" cx="124" cy="58" r="2.8"/><circle class="node-center" cx="120" cy="120" r="19"/><text x="120" y="123" text-anchor="middle">DATA</text><text x="120" y="235" text-anchor="middle">CONNECT THE DOTS.</text></svg><span class="orbit-pill one">DATA → INSIGHT</span><span class="orbit-pill two">CURIOUS BY NATURE</span><span class="orbit-pill three">01 / CONNECT THE DOTS</span></div><h1 class="wordmark" id="hero-name" aria-label="Joey"><span class="wordmark-motion"><span class="wordmark-float"><span class="wordmark-letter" aria-hidden="true">J</span><span class="wordmark-letter" aria-hidden="true">O</span><span class="wordmark-letter accent" aria-hidden="true">E</span><span class="wordmark-letter accent" aria-hidden="true">Y</span><span class="wordmark-letter dot" aria-hidden="true">.</span></span></span></h1>
  <div class="hero-caption"><div class="hero-name"><h2>王哲豪 / Joey Wang</h2><p class="profile-headline">AI Agent Engineering</p><p class="profile-description">关注 LLM、工具与数据的协同，结合数据分析与产品思维，探索面向业务的 AI 工作流。</p><div class="profile-tags" aria-label="关注方向"><span>AI ENGINEERING</span><span>DATA</span><span>PRODUCT</span></div></div><div class="hero-visual project-covers" aria-label="两项真实研究项目预览"><a href="#work" class="research-cover cover-live" data-open-file="0"><div class="cover-top"><span>RESEARCH / 01</span><span>↗</span></div><h3>直播话术<br>&amp; GMV</h3><strong>150<span>有效样本</span></strong><p>事件型观察研究<br>Logistic Regression</p><span class="cover-bottom">BUS303 / FINAL YEAR PROJECT</span></a><a href="#work" class="research-cover cover-finance" data-open-file="1"><div class="cover-top"><span>RESEARCH / 02</span><span>↗</span></div><h3>金融数据<br>与投资策略</h3><strong>29,266<span>公司年度样本</span></strong><p>Python · WRDS<br>EDA &amp; OLS</p><span class="cover-bottom">IOM301 / DATA ANALYSIS</span></a></div></div></div>
  <div class="hero-bottom"><a href="#work">打开项目档案 ↓</a><p>保持好奇，清晰思考。<br>STAY CURIOUS. THINK CLEARLY.</p></div>
 </section>
@@ -150,6 +165,7 @@
 <div class="pointer-glow" aria-hidden="true"></div>
 <footer class="site-footer wrap"><span>© JOEY WANG / 王哲豪<br>PERSONAL PORTFOLIO · VOL. 01</span><a href="#home">BACK TO TOP ↑</a><span>保持好奇，持续成长。<br>END OF ARCHIVE.</span></footer>
 <script>
+
 
 
 // All content remains readable without JavaScript. Motion never gates access.
@@ -330,6 +346,34 @@ addEventListener('blur', () => {
 
 
 document.querySelectorAll('[data-open-file]').forEach(link=>{link.addEventListener('click',()=>activateTab(Number(link.dataset.openFile),false,true));});
+
+
+// Small pointer response on the name, with independent layers for ambient motion.
+const nameMotion = document.querySelector('.wordmark-motion');
+let namePointerFrame = 0;
+function resetNameMotion() {
+  cancelAnimationFrame(namePointerFrame);
+  namePointerFrame = 0;
+  ['--name-pan-x', '--name-pan-y', '--name-turn'].forEach(property => nameMotion.style.removeProperty(property));
+}
+wordmark.addEventListener('pointermove', event => {
+  if (!finePointer.matches || motionPreference.matches || innerWidth <= 700) return;
+  const {clientX, clientY} = event;
+  cancelAnimationFrame(namePointerFrame);
+  namePointerFrame = requestAnimationFrame(() => {
+    namePointerFrame = 0;
+    const bounds = wordmark.getBoundingClientRect();
+    const x = Math.max(-.5, Math.min(.5, (clientX - bounds.left) / bounds.width - .5));
+    const y = Math.max(-.5, Math.min(.5, (clientY - bounds.top) / bounds.height - .5));
+    nameMotion.style.setProperty('--name-turn', `${(x * .9).toFixed(3)}deg`);
+    nameMotion.style.setProperty('--name-pan-x', `${(x * 5).toFixed(2)}px`);
+    nameMotion.style.setProperty('--name-pan-y', `${(y * 3).toFixed(2)}px`);
+  });
+}, {passive:true});
+wordmark.addEventListener('pointerleave', resetNameMotion);
+addEventListener('blur', resetNameMotion);
+addEventListener('resize', () => { if (innerWidth <= 700) resetNameMotion(); }, {passive:true});
+motionPreference.addEventListener('change', resetNameMotion);
 
 </script>
 </body>
