@@ -1,4 +1,4 @@
-# Joey Wang · Personal Portfolio V1
+# Joey Wang · Personal Portfolio
 
 王哲豪 Joey Wang 的个人求职作品集。
 
@@ -18,3 +18,8 @@
 后续修改 `index.html` 并提交，GitHub Pages 会重新发布。首次部署完成后，以 Pages 设置中实际显示的网址为准。
 
 `.nojekyll` 用于将此项目作为纯静态网站发布。
+
+
+## V2 · 项目预览版
+
+首页以两项真实研究的封面作为视觉预览，点击可跳转并打开对应研究；个人介绍聚焦 AI Agent Engineering。奖学金年份更新为 2024–2025、2025–2026，教育与技能区标题简化为“关于我”。
