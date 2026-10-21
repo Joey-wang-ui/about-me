@@ -128,7 +128,8 @@ body{font-family:var(--sans);background-image:radial-gradient(#34475a10 .6px,tra
 html{scrollbar-gutter:stable}html[data-intro="loading"],html[data-intro="leaving"]{overflow:hidden}
 .intro-screen{position:fixed;inset:0;z-index:1000;display:grid;grid-template-rows:1fr;padding:35px 5vw 40px;background:#e8eeeb;color:#233745;background-image:linear-gradient(#536e7f08 1px,transparent 1px),linear-gradient(90deg,#536e7f08 1px,transparent 1px);background-size:70px 70px;overflow:auto;overscroll-behavior:contain;transform:translateY(0);transition:transform .65s cubic-bezier(.76,0,.24,1);border-bottom:1px solid #9fb4bc}
 .intro-screen[hidden]{display:none}
-.intro-progress{width:min(1100px,100%);align-self:center;justify-self:center}
+.intro-lake{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.intro-progress{position:relative;z-index:1;width:min(1100px,100%);align-self:center;justify-self:center}
 .intro-count{text-align:right;font:400 clamp(24px,3vw,44px)/1 var(--mono);letter-spacing:-1px;font-variant-numeric:tabular-nums;margin-bottom:36px}
 .intro-percent{display:inline-block;min-width:2ch}.intro-unit{font-size:.5em;letter-spacing:0;margin-left:6px}
 .intro-line{--progress:0%;--cell:28px;position:relative;height:clamp(32px,3.4vw,48px);padding:4px;border:2px solid #36536a;background:#d4dfe3;box-shadow:4px 4px 0 #36536a30}
@@ -354,6 +355,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 </head>
 <body>
 <div class="intro-screen" hidden aria-label="作品集进场动画">
+ <canvas class="intro-lake" aria-hidden="true"></canvas>
  <div class="intro-progress"><div class="intro-count" aria-hidden="true"><span class="intro-percent">00</span><span class="intro-unit">%</span></div><div class="intro-line" role="progressbar" aria-label="进场动画进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="intro-track"><div class="intro-fill"><svg class="intro-wave" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20C25 4 75 4 100 20S175 36 200 20S275 4 300 20S375 36 400 20V40H0Z" fill="#efffe9" opacity=".24"/><path d="M0 28C25 18 75 18 100 28S175 38 200 28S275 18 300 28S375 38 400 28V40H0Z" fill="#e1fbff" opacity=".22"/></svg></div></div><div class="intro-head" aria-hidden="true"><svg class="intro-front" viewBox="0 0 24 100" preserveAspectRatio="none"><path d="M12 0V100"/></svg><span class="intro-spark"><svg viewBox="0 0 16 16"><path d="M6 0h4v4h6v4h-4v4h2v4h-4v-2H6v2H2v-4h2V8H0V4h6Z" fill="#f3d56c"/><path d="M6 6h1v3H6zm3 0h1v3H9z" fill="#36536a"/><path d="M7 1h2v3H7zM1 5h3v1H1z" fill="#fff2bb"/></svg></span></div></div></div>
 </div>
 <script>
@@ -440,6 +442,8 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
   const progressBar = screen.querySelector('[role="progressbar"]');
   const fill = screen.querySelector('.intro-fill');
   const front = screen.querySelector('.intro-front path');
+  const lake = screen.querySelector('.intro-lake');
+  const lakeContext = lake.getContext('2d');
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const background = [...document.querySelectorAll('.site-header, #main, .site-footer, .skip-link')];
   let frame = 0, closeTimer = 0, active = false, run = 0;
@@ -448,6 +452,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
     number.textContent = String(value).padStart(2, '0');
     progressBar.style.setProperty('--progress', `${value}%`);
     progressBar.setAttribute('aria-valuenow', String(value));
+    lakeProgress = value / 100;
     // A small travelling crest leads the fill; flatten it at 0 and 100%.
     const amplitude = Math.sin(value * Math.PI / 100) * 6;
     const phase = performance.now() / 180;
@@ -459,6 +464,121 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
     fill.style.clipPath = `polygon(0 0, ${edge.map(({ x, y }) => `calc(${value}% + ${x.toFixed(2)}px) ${y}%`).join(', ')}, 0 100%)`;
     front.setAttribute('d', edge.map(({ x, y }, i) => `${i ? 'L' : 'M'}${(12 + x).toFixed(2)} ${y}`).join(' '));
   };
+  // Transparent lake light lives behind the original bar and star.
+  let lakeFrame = 0, lakeProgress = 0, lakeWidth = 0, lakeHeight = 0;
+  let lakeGeometry = null, lastRippleX = null, lakeRipples = [];
+  const starImage = document.createElement('canvas');
+  starImage.width = starImage.height = 16;
+  const starContext = starImage.getContext('2d');
+  if (starContext) {
+    screen.querySelectorAll('.intro-spark svg path').forEach(path => {
+      starContext.fillStyle = path.getAttribute('fill');
+      starContext.fill(new Path2D(path.getAttribute('d')));
+    });
+  }
+  function sizeLake() {
+    if (!lakeContext) return;
+    const bounds = lake.getBoundingClientRect();
+    const bar = progressBar.getBoundingClientRect();
+    const track = screen.querySelector('.intro-track').getBoundingClientRect();
+    const count = screen.querySelector('.intro-count').getBoundingClientRect();
+    const percent = number.getBoundingClientRect();
+    const star = screen.querySelector('.intro-spark').getBoundingClientRect();
+    const ratio = Math.min(devicePixelRatio || 1, 1.5);
+    lakeWidth = bounds.width;
+    lakeHeight = bounds.height;
+    lake.width = Math.round(lakeWidth * ratio);
+    lake.height = Math.round(lakeHeight * ratio);
+    lakeContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+    lakeGeometry = {
+      left: track.left - bounds.left, width: track.width,
+      top: bar.top - bounds.top, bottom: bar.bottom - bounds.top, height: bar.height,
+      barLeft: bar.left - bounds.left, barWidth: bar.width,
+      count: { x: percent.left - bounds.left, y: count.top - bounds.top, width: count.right - percent.left, height: count.height },
+      starSize: star.width,
+    };
+  }
+  function drawLake(now) {
+    if (!lakeContext || !lakeGeometry) return;
+    const c = lakeContext, g = lakeGeometry, time = now / 1000;
+    const waterline = (g.top + g.bottom) / 2;
+    const head = g.left + g.width * lakeProgress;
+    c.clearRect(0, 0, lakeWidth, lakeHeight);
+    if (lastRippleX === null || Math.abs(head - lastRippleX) > Math.max(24, g.width * .075)) {
+      lakeRipples.push({ x: head, born: now });
+      lastRippleX = head;
+    }
+    lakeRipples = lakeRipples.filter(ripple => now - ripple.born < 2300);
+
+    c.save();
+
+    // Rings expand symmetrically above and below the moving star's trail.
+    lakeRipples.forEach(ripple => {
+      const age = (now - ripple.born) / 1000;
+      const radiusX = 12 + age * Math.min(175, Math.max(110, lakeWidth * .13));
+      const radiusY = 5 + age * 67;
+      const fade = .25 * Math.pow(1 - age / 2.3, 1.4);
+      for (const scale of [1, .76]) {
+        c.beginPath();
+        c.ellipse(ripple.x, waterline, radiusX * scale, radiusY * scale, 0, 0, Math.PI * 2);
+        c.lineWidth = .9;
+        c.strokeStyle = `rgba(78,128,149,${fade * scale})`;
+        c.stroke();
+        c.beginPath();
+        c.ellipse(ripple.x, waterline + 1.6, radiusX * scale, radiusY * scale, 0, 0, Math.PI * 2);
+        c.strokeStyle = `rgba(255,255,255,${fade * 1.35 * scale})`;
+        c.stroke();
+      }
+    });
+
+    // Match the bar's moving gradient, then soften it into a broken reflection.
+    const inkAnimation = fill.getAnimations().find(animation => animation.animationName === 'intro-color-flow');
+    const phase = ((inkAnimation?.currentTime || 0) % 3200) / 3200;
+    const inkLeft = g.left - g.width * (1 - phase);
+    const reflection = c.createLinearGradient(inkLeft, 0, inkLeft + g.width * 2, 0);
+    [[0,'#4a7ddc'],[.14,'#3ac2d5'],[.26,'#6cd7a8'],[.385,'#eed46c'],[.46,'#ee9664'],[.5,'#4a7ddc'],[.64,'#3ac2d5'],[.76,'#6cd7a8'],[.885,'#eed46c'],[.96,'#ee9664'],[1,'#4a7ddc']].forEach(([stop,color]) => reflection.addColorStop(stop,color));
+    for (let depth = 0; depth < 125; depth += 2.5) {
+      const drift = Math.sin(depth * .15 - time * 3) * (2 + depth * .045);
+      const fade = Math.exp(-depth / 35);
+      c.globalAlpha = .19 * fade;
+      c.fillStyle = reflection;
+      c.fillRect(g.left + drift, g.bottom + 14 + depth, g.width * lakeProgress, 1.7);
+      c.globalAlpha = .23 * fade;
+      c.fillStyle = '#ffffff';
+      c.fillRect(g.left + drift, g.bottom + 16 + depth, g.width * lakeProgress, .6);
+    }
+    // A small, inverted copy of the existing pixel star shimmers below the bar.
+    if (starContext) {
+      c.imageSmoothingEnabled = false;
+      for (let row = 0; row < 16; row++) {
+        const drift = Math.sin(row * .7 - time * 3.5) * 2.5;
+        c.globalAlpha = .3 * (1 - row / 24);
+        c.drawImage(starImage, 0, 15 - row, 16, 1,
+          head - g.starSize / 2 + drift, g.bottom + g.height + 23 + row * g.starSize / 16,
+          g.starSize, g.starSize / 16 + .2);
+      }
+    }
+    c.restore();
+    // Clear overlapping protected areas separately, keeping the original UI intact.
+    c.clearRect(g.barLeft - 6, g.top - 3, g.barWidth + 12, g.height + 11);
+    c.clearRect(g.count.x - 5, g.count.y - 5, g.count.width + 10, g.count.height + 10);
+    c.clearRect(head - g.starSize, g.top - g.starSize - 25, g.starSize * 2, g.starSize + 30);
+    lakeFrame = requestAnimationFrame(drawLake);
+  }
+  function startLake() {
+    cancelAnimationFrame(lakeFrame);
+    lakeRipples = [];
+    lastRippleX = null;
+    sizeLake();
+    if (lakeContext) lakeFrame = requestAnimationFrame(drawLake);
+  }
+  function stopLake() {
+    cancelAnimationFrame(lakeFrame);
+    lakeFrame = 0;
+  }
+  addEventListener('resize', () => {
+    if (!screen.hidden) sizeLake();
+  }, { passive: true });
   function finish(immediate = false) {
     if (!active) return;
     active = false;
@@ -469,6 +589,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
     document.documentElement.dataset.intro = immediate ? 'ready' : 'leaving';
     dispatchEvent(new CustomEvent('joey:intro-reveal'));
     const release = () => {
+      stopLake();
       screen.hidden = true;
       document.documentElement.dataset.intro = 'ready';
       background.forEach(element => { element.inert = false; });
@@ -494,8 +615,9 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
     document.documentElement.dataset.intro = 'loading';
     background.forEach(element => { element.inert = true; });
     update(0);
+    startLake();
     let fontsReady = !document.fonts;
-    if (document.fonts) document.fonts.ready.then(() => { if (thisRun === run) fontsReady = true; });
+    if (document.fonts) document.fonts.ready.then(() => { if (thisRun === run) { fontsReady = true; if (!screen.hidden) sizeLake(); } });
     const began = performance.now();
     let completedAt = 0;
     const tick = now => {
