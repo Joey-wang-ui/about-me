@@ -467,6 +467,11 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
   // Transparent lake light lives behind the original bar and star.
   let lakeFrame = 0, lakeProgress = 0, lakeWidth = 0, lakeHeight = 0;
   let lakeGeometry = null, lastRippleX = null, lakeRipples = [];
+  const lakeField = document.createElement('canvas');
+  const fieldContext = lakeField.getContext('2d');
+  let fieldPixels = null, fieldTop = 0, fieldHeight = 0, lastLakePaint = 0;
+  let reflectedStar = null;
+  const waterInk = [[0,74,125,220],[.14,58,194,213],[.26,108,215,168],[.385,238,212,108],[.46,238,150,100],[.5,74,125,220],[.64,58,194,213],[.76,108,215,168],[.885,238,212,108],[.96,238,150,100],[1,74,125,220]];
   const starImage = document.createElement('canvas');
   starImage.width = starImage.height = 16;
   const starContext = starImage.getContext('2d');
@@ -475,6 +480,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
       starContext.fillStyle = path.getAttribute('fill');
       starContext.fill(new Path2D(path.getAttribute('d')));
     });
+    reflectedStar = starContext.getImageData(0, 0, 16, 16).data;
   }
   function sizeLake() {
     if (!lakeContext) return;
@@ -497,78 +503,119 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash){
       count: { x: percent.left - bounds.left, y: count.top - bounds.top, width: count.right - percent.left, height: count.height },
       starSize: star.width,
     };
+    fieldTop = Math.max(0, lakeGeometry.top - 180);
+    fieldHeight = Math.min(lakeHeight, lakeGeometry.bottom + 200) - fieldTop;
+    const sampleSize = Math.max(2.6, lakeWidth / 500);
+    lakeField.width = Math.max(1, Math.ceil(lakeWidth / sampleSize));
+    lakeField.height = Math.max(1, Math.ceil(fieldHeight / sampleSize));
+    if (fieldContext) fieldPixels = fieldContext.createImageData(lakeField.width, lakeField.height);
   }
   function drawLake(now) {
-    if (!lakeContext || !lakeGeometry) return;
-    const c = lakeContext, g = lakeGeometry, time = now / 1000;
+    if (!lakeContext || !lakeGeometry || !fieldContext || !fieldPixels) return;
+    lakeFrame = requestAnimationFrame(drawLake);
+    if (now - lastLakePaint < 32) return;
+    lastLakePaint = now;
+    const c = lakeContext, g = lakeGeometry;
     const waterline = (g.top + g.bottom) / 2;
     const head = g.left + g.width * lakeProgress;
-    c.clearRect(0, 0, lakeWidth, lakeHeight);
-    if (lastRippleX === null || Math.abs(head - lastRippleX) > Math.max(24, g.width * .075)) {
+    if (lastRippleX === null || Math.abs(head - lastRippleX) > Math.max(42, g.width * .16)) {
       lakeRipples.push({ x: head, born: now });
       lastRippleX = head;
     }
-    lakeRipples = lakeRipples.filter(ripple => now - ripple.born < 2300);
-
-    c.save();
-
-    // Rings expand symmetrically above and below the moving star's trail.
-    lakeRipples.forEach(ripple => {
+    lakeRipples = lakeRipples.filter(ripple => now - ripple.born < 2100);
+    const wavelength = Math.min(76, Math.max(48, lakeWidth * .065));
+    const frequency = Math.PI * 2 / wavelength;
+    const spread = wavelength * .72;
+    const waves = lakeRipples.map(ripple => {
       const age = (now - ripple.born) / 1000;
-      const radiusX = 12 + age * Math.min(175, Math.max(110, lakeWidth * .13));
-      const radiusY = 5 + age * 67;
-      const fade = .25 * Math.pow(1 - age / 2.3, 1.4);
-      for (const scale of [1, .76]) {
-        c.beginPath();
-        c.ellipse(ripple.x, waterline, radiusX * scale, radiusY * scale, 0, 0, Math.PI * 2);
-        c.lineWidth = .9;
-        c.strokeStyle = `rgba(78,128,149,${fade * scale})`;
-        c.stroke();
-        c.beginPath();
-        c.ellipse(ripple.x, waterline + 1.6, radiusX * scale, radiusY * scale, 0, 0, Math.PI * 2);
-        c.strokeStyle = `rgba(255,255,255,${fade * 1.35 * scale})`;
-        c.stroke();
-      }
+      return { x: ripple.x, radius: age * Math.min(155, Math.max(105, lakeWidth * .12)),
+        amplitude: 4.8 * Math.exp(-age * 1.15) * (1 - Math.exp(-age * 9)) };
     });
-
-    // Match the bar's moving gradient, then soften it into a broken reflection.
     const inkAnimation = fill.getAnimations().find(animation => animation.animationName === 'intro-color-flow');
     const phase = ((inkAnimation?.currentTime || 0) % 3200) / 3200;
     const inkLeft = g.left - g.width * (1 - phase);
-    const reflection = c.createLinearGradient(inkLeft, 0, inkLeft + g.width * 2, 0);
-    [[0,'#4a7ddc'],[.14,'#3ac2d5'],[.26,'#6cd7a8'],[.385,'#eed46c'],[.46,'#ee9664'],[.5,'#4a7ddc'],[.64,'#3ac2d5'],[.76,'#6cd7a8'],[.885,'#eed46c'],[.96,'#ee9664'],[1,'#4a7ddc']].forEach(([stop,color]) => reflection.addColorStop(stop,color));
-    for (let depth = 0; depth < 125; depth += 2.5) {
-      const drift = Math.sin(depth * .15 - time * 3) * (2 + depth * .045);
-      const fade = Math.exp(-depth / 35);
-      c.globalAlpha = .19 * fade;
-      c.fillStyle = reflection;
-      c.fillRect(g.left + drift, g.bottom + 14 + depth, g.width * lakeProgress, 1.7);
-      c.globalAlpha = .23 * fade;
-      c.fillStyle = '#ffffff';
-      c.fillRect(g.left + drift, g.bottom + 16 + depth, g.width * lakeProgress, .6);
+    const w = lakeField.width, h = lakeField.height, pixels = fieldPixels.data;
+    const stepX = lakeWidth / w, stepY = fieldHeight / h;
+    const colors = new Float32Array(w * 3);
+    for (let col = 0; col < w; col++) {
+      const position = Math.max(0, Math.min(1, (col * stepX - inkLeft) / (g.width * 2)));
+      let stop = 1;
+      while (stop < waterInk.length - 1 && position > waterInk[stop][0]) stop++;
+      const a = waterInk[stop - 1], b = waterInk[stop];
+      const t = (position - a[0]) / (b[0] - a[0]);
+      for (let channel = 0; channel < 3; channel++) colors[col * 3 + channel] = a[channel + 1] + (b[channel + 1] - a[channel + 1]) * t;
     }
-    // A small, inverted copy of the existing pixel star shimmers below the bar.
-    if (starContext) {
-      c.imageSmoothingEnabled = false;
-      for (let row = 0; row < 16; row++) {
-        const drift = Math.sin(row * .7 - time * 3.5) * 2.5;
-        c.globalAlpha = .3 * (1 - row / 24);
-        c.drawImage(starImage, 0, 15 - row, 16, 1,
-          head - g.starSize / 2 + drift, g.bottom + g.height + 23 + row * g.starSize / 16,
-          g.starSize, g.starSize / 16 + .2);
+    // A continuous height field refracts the background and bends reflected light.
+    for (let row = 0; row < h; row++) {
+      const y = fieldTop + (row + .5) * stepY;
+      const dy = y - waterline;
+      const edgeFade = Math.min(1, row / 13, (h - row - 1) / 16);
+      for (let col = 0; col < w; col++) {
+        const x = (col + .5) * stepX;
+        let slopeX = 0, slopeY = 0;
+        for (const wave of waves) {
+          const dx = (x - wave.x) / 1.3;
+          const distance = Math.sqrt(dx * dx + dy * dy) + .001;
+          const delta = distance - wave.radius;
+          if (Math.abs(delta) > spread * 2.4) continue;
+          const envelope = Math.exp(-delta * delta / (spread * spread));
+          const angle = delta * frequency;
+          const slope = wave.amplitude * envelope * (frequency * Math.cos(angle) - 2 * delta / (spread * spread) * Math.sin(angle));
+          slopeX += slope * dx / (distance * 1.3);
+          slopeY += slope * dy / distance;
+        }
+        const normalLength = Math.sqrt(1 + slopeX * slopeX + slopeY * slopeY);
+        const halfDot = Math.max(0, Math.min(1, (.18 * slopeX + .32 * slopeY + .93) / normalLength));
+        const gloss = Math.max(0, Math.pow(halfDot, 38) - .0634);
+        const shade = -(slopeX * .25 + slopeY * .5) * 24;
+        const refractX = x + slopeX * 24, refractY = y + slopeY * 19;
+        const gridX = ((refractX % 70) + 70) % 70, gridY = ((refractY % 70) + 70) % 70;
+        const grid = Math.max(0, 1 - Math.min(gridX, 70 - gridX, gridY, 70 - gridY) / 1.5);
+        let red = 232 + shade + gloss * 57 - grid * 4;
+        let green = 238 + shade + gloss * 40 - grid * 3;
+        let blue = 235 + shade + gloss * 48 - grid * 2;
+        let coverage = Math.min(1, (Math.abs(slopeX) + Math.abs(slopeY)) * 6);
+        const depth = y - g.bottom - 14 + slopeY * 30;
+        const sourceX = x + slopeX * 28;
+        if (depth > 0 && depth < g.height + 48 && sourceX > g.left && sourceX < head) {
+          const softEdge = Math.min(1, depth / 7, (g.height + 48 - depth) / 28);
+          const reflection = .22 * Math.exp(-depth / 62) * softEdge;
+          const sample = Math.max(0, Math.min(w - 1, Math.round(sourceX / stepX))) * 3;
+          red += (colors[sample] - red) * reflection;
+          green += (colors[sample + 1] - green) * reflection;
+          blue += (colors[sample + 2] - blue) * reflection;
+          coverage = Math.max(coverage, .72 * softEdge);
+        }
+        const starX = (x - head + slopeX * 18) / g.starSize + .5;
+        const starY = (y - g.bottom - g.height - 23 + slopeY * 18) / g.starSize;
+        if (reflectedStar && starX >= 0 && starX < 1 && starY >= 0 && starY < 1) {
+          const sample = (Math.min(15, Math.floor((1 - starY) * 16)) * 16 + Math.floor(starX * 16)) * 4;
+          const reflection = reflectedStar[sample + 3] / 255 * .24;
+          red += (reflectedStar[sample] - red) * reflection;
+          green += (reflectedStar[sample + 1] - green) * reflection;
+          blue += (reflectedStar[sample + 2] - blue) * reflection;
+          coverage = Math.max(coverage, reflection > 0 ? .8 : 0);
+        }
+        const pixel = (row * w + col) * 4;
+        pixels[pixel] = red;
+        pixels[pixel + 1] = green;
+        pixels[pixel + 2] = blue;
+        pixels[pixel + 3] = 210 * edgeFade * coverage;
       }
     }
-    c.restore();
-    // Clear overlapping protected areas separately, keeping the original UI intact.
+    fieldContext.putImageData(fieldPixels, 0, 0);
+    c.clearRect(0, 0, lakeWidth, lakeHeight);
+    c.imageSmoothingEnabled = true;
+    c.drawImage(lakeField, 0, fieldTop, lakeWidth, fieldHeight);
     c.clearRect(g.barLeft - 6, g.top - 3, g.barWidth + 12, g.height + 11);
     c.clearRect(g.count.x - 5, g.count.y - 5, g.count.width + 10, g.count.height + 10);
     c.clearRect(head - g.starSize, g.top - g.starSize - 25, g.starSize * 2, g.starSize + 30);
-    lakeFrame = requestAnimationFrame(drawLake);
   }
   function startLake() {
     cancelAnimationFrame(lakeFrame);
     lakeRipples = [];
     lastRippleX = null;
+    lastLakePaint = 0;
     sizeLake();
     if (lakeContext) lakeFrame = requestAnimationFrame(drawLake);
   }
